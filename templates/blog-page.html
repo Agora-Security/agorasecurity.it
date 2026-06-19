@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="blog-post">
+  <header class="prose-header container container--narrow">
+    <p class="post-meta mono">
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time>
+      {% if page.taxonomies.tags %} · {% for tag in page.taxonomies.tags %}<span class="tag">{{ tag }}</span>{% if not loop.last %} {% endif %}{% endfor %}{% endif %}
+    </p>
+    <h1 class="prose-title">{{ page.title }}</h1>
+    {% if page.description %}<p class="prose-lead">{{ page.description }}</p>{% endif %}
+  </header>
+
+  <div class="prose container container--narrow">
+    {{ page.content | safe }}
+  </div>
+
+  <footer class="post-footer container container--narrow">
+    <p class="mono">← <a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">{% if lang == 'en' %}back to insights{% else %}torna agli insights{% endif %}</a></p>
+  </footer>
+</article>
+{% endblock %}

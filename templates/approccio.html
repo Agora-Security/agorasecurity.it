@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        Five principles. And why we don't compromise on them.
+      {% else %}
+        Cinque principi. E perché non scendiamo a compromessi.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        Our cybersecurity rests on five engineering and governance choices that decide whether protection actually holds. Here's each one — and the reasoning behind it.
+      {% else %}
+        La nostra cybersecurity poggia su cinque scelte di ingegneria e governance che decidono se la protezione tiene davvero. Eccole, una per una, con il ragionamento dietro.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== I 5 PRINCIPI — spiegati ============== #}
+<section class="section section--philosophy" data-reveal data-marker="principles">
+  <div class="container container--narrow">
+    <ol class="philosophy-list">
+
+      <li class="principle-deep" data-stagger>
+        <span class="principle-deep-num mono" aria-hidden="true">01</span>
+        <div class="principle-deep-body">
+          <h2 class="principle-deep-name">{% if lang == 'en' %}Security by-design & by-default{% else %}Security by-design & by-default{% endif %}</h2>
+          <p class="principle-deep-tag mono">{% if lang == 'en' %}built in Rust{% else %}costruito in Rust{% endif %}</p>
+          <p class="principle-deep-what">{% if lang == 'en' %}A stack that is memory-safe by design — the same technology that protects Cloudflare, Discord and the Linux and Windows kernels.{% else %}Uno stack memory-safe by design — la stessa tecnologia che protegge Cloudflare, Discord e i kernel Linux e Windows.{% endif %}</p>
+          <p class="principle-deep-why">{% if lang == 'en' %}<strong>Why it matters:</strong> roughly 70% of the critical vulnerabilities historically reported by Microsoft and Google are memory-safety bugs — use-after-free, buffer overflows, double frees. By writing in Rust we remove that entire class at the root, instead of chasing it patch after patch. Fewer vulnerabilities by construction means a smaller attack surface for you, and less emergency maintenance for everyone.{% else %}<strong>Perché conta:</strong> circa il 70% delle vulnerabilità critiche storicamente segnalate da Microsoft e Google sono bug di memory safety — use-after-free, buffer overflow, double free. Scrivendo in Rust eliminiamo quell'intera classe alla radice, invece di inseguirla patch dopo patch. Meno vulnerabilità per costruzione significa una superficie d'attacco più piccola per voi e meno manutenzione d'emergenza per tutti.{% endif %}</p>
+        </div>
+      </li>
+
+      <li class="principle-deep" data-stagger>
+        <span class="principle-deep-num mono" aria-hidden="true">02</span>
+        <div class="principle-deep-body">
+          <h2 class="principle-deep-name">{% if lang == 'en' %}Sovereign{% else %}Sovrana{% endif %}</h2>
+          <p class="principle-deep-tag mono">{% if lang == 'en' %}Linux, EU stack{% else %}Linux, stack UE{% endif %}</p>
+          <p class="principle-deep-what">{% if lang == 'en' %}A European stack, end to end: where your data lives, which jurisdiction governs it, which dependencies run it — all under control.{% else %}Uno stack europeo, end-to-end: dove vivono i dati, quale giurisdizione li governa, quali dipendenze li fanno girare — tutto sotto controllo.{% endif %}</p>
+          <p class="principle-deep-why">{% if lang == 'en' %}<strong>Why it matters:</strong> NIS 2, DORA and the AI Act all demand control over where data and dependencies sit. A security provider running on an extra-EU cloud quietly re-introduces the exact risk it's meant to reduce — opaque transfers, foreign legal access, lock-in. Sovereignty means a clear jurisdiction, no vendor lock-in, and no undocumented data leaving the EU.{% else %}<strong>Perché conta:</strong> NIS 2, DORA e l'AI Act chiedono tutti controllo su dove risiedono dati e dipendenze. Un fornitore di sicurezza che gira su cloud extra-UE re-introduce in silenzio esattamente il rischio che dovrebbe ridurre — trasferimenti opachi, accesso legale estero, lock-in. Sovranità significa giurisdizione chiara, nessun vendor lock-in, nessun dato che lascia l'UE senza che sia documentato.{% endif %}</p>
+        </div>
+      </li>
+
+      <li class="principle-deep" data-stagger>
+        <span class="principle-deep-num mono" aria-hidden="true">03</span>
+        <div class="principle-deep-body">
+          <h2 class="principle-deep-name">{% if lang == 'en' %}Auditable{% else %}Auditabile{% endif %}</h2>
+          <p class="principle-deep-tag mono">{% if lang == 'en' %}Open Source first{% else %}Open Source first{% endif %}</p>
+          <p class="principle-deep-what">{% if lang == 'en' %}Auditable dependencies, an SBOM generated at build time. Nothing you have to take on faith.{% else %}Codice ispezionabile, dipendenze auditabili, un SBOM generato a build time. Niente che dobbiate prendere per fede.{% endif %}</p>
+          <p class="principle-deep-why">{% if lang == 'en' %}<strong>Why it matters:</strong> trust isn't declared, it's verified. If you can't read the code that protects your company, you're delegating trust to a brand and a marketing claim. Open source and a software bill of materials give you the right to check — supply-chain provenance, known-vulnerability exposure, what actually runs — rather than just hoping the vendor got it right.{% else %}<strong>Perché conta:</strong> la fiducia non si dichiara, si verifica. Se non potete leggere il codice che protegge la vostra azienda, state delegando la fiducia a un marchio e a una promessa di marketing. Open source e software bill of materials vi danno il diritto di controllare — provenienza della supply chain, esposizione a vulnerabilità note, cosa gira davvero — invece di sperare che il fornitore abbia fatto le cose per bene.{% endif %}</p>
+        </div>
+      </li>
+
+      <li class="principle-deep" data-stagger>
+        <span class="principle-deep-num mono" aria-hidden="true">04</span>
+        <div class="principle-deep-body">
+          <h2 class="principle-deep-name">{% if lang == 'en' %}Accountable{% else %}Responsabile{% endif %}</h2>
+          <p class="principle-deep-tag mono">{% if lang == 'en' %}Human-in-the-Loop{% else %}Human-in-the-Loop{% endif %}</p>
+          <p class="principle-deep-what">{% if lang == 'en' %}AI accelerates the work. A person decides. The calls that carry consequences are always made by a human.{% else %}L'AI accelera il lavoro. Una persona decide. Le scelte che hanno conseguenze le prende sempre un essere umano.{% endif %}</p>
+          <p class="principle-deep-why">{% if lang == 'en' %}<strong>Why it matters:</strong> a model doesn't answer to a judge, a regulator or a board. The decisions that matter in security — incident severity, escalation, crisis communication, what to disclose and when — need someone who is accountable for them. We use AI to amplify expert judgement and move faster, never to replace the person who has to own the outcome.{% else %}<strong>Perché conta:</strong> un modello non risponde davanti a un giudice, a un'autorità o a un consiglio di amministrazione. Le decisioni che contano in sicurezza — severity di un incidente, escalation, comunicazione di crisi, cosa dichiarare e quando — hanno bisogno di qualcuno che ne risponda. Usiamo l'AI per amplificare il giudizio dell'esperto e andare più veloci, mai per sostituire la persona che deve rispondere del risultato.{% endif %}</p>
+        </div>
+      </li>
+
+      <li class="principle-deep" data-stagger>
+        <span class="principle-deep-num mono" aria-hidden="true">05</span>
+        <div class="principle-deep-body">
+          <h2 class="principle-deep-name">{% if lang == 'en' %}Coherent{% else %}Coerente{% endif %}</h2>
+          <p class="principle-deep-tag mono">{% if lang == 'en' %}self-applied{% else %}auto-applicato{% endif %}</p>
+          <p class="principle-deep-what">{% if lang == 'en' %}We hold ourselves to the very standards we implement for clients — and we can prove it.{% else %}Applichiamo a noi stessi gli stessi standard che implementiamo per i clienti — e possiamo dimostrarlo.{% endif %}</p>
+          <p class="principle-deep-why">{% if lang == 'en' %}<strong>Why it matters:</strong> we don't sell a security posture we don't practise. Agorà Security is ISO/IEC 27001, ISO/IEC 27017 and ISO 9001 certified, NIS 2 and AI Act self-assessed, GDPR by design — evidence published in our Trust Center, not behind a sales gate. If a control doesn't hold up for us, we don't recommend it to you.{% else %}<strong>Perché conta:</strong> non vendiamo una postura di sicurezza che non pratichiamo. Agorà Security è certificata ISO/IEC 27001, ISO/IEC 27017 e ISO 9001, NIS 2 e AI Act self-assessed, GDPR by design — evidenze pubblicate nel nostro Trust Center, non dietro un gate commerciale. Se un controllo non regge per noi, non lo proponiamo a voi.{% endif %}</p>
+        </div>
+      </li>
+
+    </ol>
+
+    <p class="philosophy-note">
+      {% if lang == 'en' %}
+        These five aren't a slogan: they're the criteria we use to choose technology and design services. The proof is in the <a href="{{ get_url(path='@/trust-center/_index.md', lang=lang) }}">Trust Center</a>.
+      {% else %}
+        Questi cinque non sono uno slogan: sono i criteri con cui scegliamo la tecnologia e progettiamo i servizi. Le prove sono nel <a href="{{ get_url(path='@/trust-center/_index.md', lang=lang) }}">Trust Center</a>.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Principles you can question.{% else %}Principi che potete mettere in discussione.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Disagree with one of them? Want to see how they translate into a concrete engagement? That's exactly the conversation we like to have.
+      {% else %}
+        Non siete d'accordo su uno di questi? Volete vedere come si traducono in un progetto concreto? È esattamente la conversazione che ci piace fare.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sol-area--compliance">
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        Compliance and governance, built to last.
+      {% else %}
+        Conformità e governance, costruite per durare.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        We turn European regulatory pressure — NIS 2, DORA, AI Act, GDPR, CRA — into a security posture that holds up under audit, under attack, as scenarios change.
+      {% else %}
+        Trasformiamo la pressione regolatoria europea — NIS 2, DORA, AI Act, GDPR, CRA — in una postura di sicurezza che regge audit, attacchi e cambi di scenario.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== SUB-CATEGORIES — 8 cards ============== #}
+<section class="section section--sol-categories" data-reveal data-marker="services">
+  <div class="container">
+    <ul class="sol-grid">
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21 H21"/>
+            <path d="M4 21 V10 L12 4 L20 10 V21"/>
+            <path d="M8 21 V13 M12 21 V13 M16 21 V13"/>
+            <path d="M3 10 H21"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}EU Regulatory Compliance{% else %}Compliance Regolatoria UE{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}European regulatory requirements mapped onto the client's operational context.{% else %}I requisiti normativi europei mappati sul contesto operativo del cliente.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIS 2</span><span class="fw-chip">DORA</span><span class="fw-chip">AI Act</span><span class="fw-chip">GDPR</span><span class="fw-chip">CRA</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M8 12 L11 15 L17 9"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}ISMS &amp; ISO Standards{% else %}ISMS &amp; Standard ISO{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Information Security Management Systems built to hold up to certification and audit.{% else %}Sistemi di Gestione costruiti per reggere certificazione e audit periodico.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">ISO/IEC 27001:2022</span><span class="fw-chip">27002</span><span class="fw-chip">27017</span><span class="fw-chip">CIS Controls v8</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="8" height="8"/>
+            <rect x="13" y="3" width="8" height="8"/>
+            <rect x="3" y="13" width="8" height="8"/>
+            <rect x="13" y="13" width="8" height="8"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Risk Assessment &amp; BIA{% else %}Risk Assessment &amp; BIA{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Qualitative and quantitative risk assessment, Business Impact Analysis, scenario modelling.{% else %}Risk assessment quali/quantitativo, Business Impact Analysis, scenari di rischio.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">ISO 31000</span><span class="fw-chip">NIST SP 800-30</span><span class="fw-chip">FAIR</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12 a9 9 0 1 1 -3 -6.7"/>
+            <path d="M21 4 V10 H15"/>
+            <path d="M12 8 v4 l3 2"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Business Continuity &amp; DR{% else %}Business Continuity &amp; DR{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Operational continuity planning and Disaster Recovery, end-to-end.{% else %}Pianificazione di continuità operativa e Disaster Recovery, end-to-end.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">ISO 22301</span><span class="fw-chip">NIST SP 800-34</span><span class="fw-chip">ISO 27031</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="8" r="4"/>
+            <path d="M2 21 a7 7 0 0 1 12 -4"/>
+            <path d="M17 13 L21 14 V18 a5 5 0 0 1 -4 5 a5 5 0 0 1 -4 -5 V14 z"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}vCISO &amp; DPO Service{% else %}vCISO &amp; DPO Service{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Fractional cyber and privacy leadership, board reporting, day-to-day governance.{% else %}Direzione cyber e privacy frazionale, board reporting, governance day-to-day.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIS 2</span><span class="fw-chip">GDPR</span><span class="fw-chip">{% if lang == 'en' %}sector-specific{% else %}settoriali{% endif %}</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13 a5 5 0 0 0 7 0 l3-3 a5 5 0 0 0 -7-7 l-1.5 1.5"/>
+            <path d="M14 11 a5 5 0 0 0 -7 0 l-3 3 a5 5 0 0 0 7 7 l1.5-1.5"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Supplier &amp; Third-Party Risk{% else %}Supplier &amp; Third-Party Risk{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Supplier security assessment, risk register, contractual security clauses.{% else %}Valutazione sicurezza fornitori, supplier risk register, clausole contrattuali.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIS 2 Art. 21</span><span class="fw-chip">ISO/IEC 27036</span><span class="fw-chip">DORA RTS</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L4 5 v6 c0 5 3.5 9 8 11 c4.5-2 8-6 8-11 V5 z"/>
+            <rect x="9" y="11" width="6" height="5"/>
+            <path d="M10 11 V9 a2 2 0 1 1 4 0 v2"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Privacy &amp; Data Protection{% else %}Privacy &amp; Data Protection{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}GDPR audit, processing register, DPIA, data breach management, privacy by design.{% else %}GDPR audit, registro trattamenti, DPIA, gestione data breach, privacy by design.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">Reg. UE 2016/679</span><span class="fw-chip">EDPB Guidelines</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 8 L12 3 L22 8 L12 13 z"/>
+            <path d="M6 10 V16 c0 2 3 3 6 3 s6-1 6-3 V10"/>
+            <path d="M22 8 V14"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Awareness &amp; Cyber Training{% else %}Awareness &amp; Cyber Training{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Role-specific training for board, management and operators. Live and e-learning.{% else %}Formazione mirata su ruolo: board, management, operatori. Live ed e-learning.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-50</span><span class="fw-chip">CIS Controls v8</span><span class="fw-chip">ENISA</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 V21 M6 7 H18 M4 13 a4 4 0 0 0 8 0 L8 7 z M12 13 a4 4 0 0 0 8 0 L16 7 z"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}AI Act &amp; AI Governance{% else %}AI Act &amp; Governance dell'AI{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}AI systems inventory, risk classification, AI Act conformity assessment, technical documentation.{% else %}Inventario dei sistemi AI, classificazione del rischio, conformity assessment AI Act, documentazione tecnica.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">Reg. UE 2024/1689</span><span class="fw-chip">ISO/IEC 42001</span><span class="fw-chip">NIST AI RMF</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+    </ul>
+
+    <p class="sol-standards-note">
+      {% if lang == 'en' %}
+        Every engagement is anchored to international cybersecurity standards and the European regulatory framework. Scope, deliverables and depth are tailored to each project.
+      {% else %}
+        Ogni progetto è ancorato agli standard internazionali di cybersecurity e al quadro regolatorio europeo. Scope, deliverable e profondità si calibrano sul singolo mandato.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Plan your compliance path.{% else %}Pianifichiamo la conformità.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Tell us your context, your deadlines, your audit scope — we'll work out together the path that makes sense.
+      {% else %}
+        Raccontaci il vostro contesto, le scadenze, lo scope dell'audit — costruiamo insieme il percorso che ha senso.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+</div>
+
+{% endblock %}

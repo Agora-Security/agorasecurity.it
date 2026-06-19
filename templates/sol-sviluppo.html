@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sol-area--dev">
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        Secure software, from the first commit.
+      {% else %}
+        Software sicuro, dal primo commit.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        We develop secure custom software and proprietary products. We choose open source because we can inspect it line by line, write memory-safe code by design in Rust, with threat modeling at kickoff and an SBOM at build time.
+      {% else %}
+        Sviluppiamo software sicuro su misura e prodotti proprietari. Scegliamo l'open source perché possiamo ispezionarlo riga per riga, scriviamo codice memory-safe by design in Rust, con threat modeling all'avvio e SBOM a build time.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== SERVIZI ============== #}
+<section class="section section--sol-categories" data-reveal data-marker="services">
+  <div class="container">
+    <ul class="sol-grid">
+
+      <!--
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L4 5 v6 c0 5 3.5 9 8 11 c4.5-2 8-6 8-11 V5 z"/>
+            <ellipse cx="12" cy="12" rx="4" ry="2.5"/>
+            <circle cx="12" cy="12" r="1" fill="currentColor"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">Resysto - Posture &amp; Compliance SaaS</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Our proprietary SaaS for continuous monitoring of security posture and compliance — memory-safe and sovereign by design.{% else %}Il nostro SaaS proprietario per il monitoraggio continuo di postura di sicurezza e compliance — memory-safe e sovrano by design.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">{% if lang == 'en' %}EU stack{% else %}Stack UE{% endif %}</span><span class="fw-chip">NIS 2</span><span class="fw-chip">DORA</span><span class="fw-chip">ISO 27001</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+      -->
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L4 5 v6 c0 5 3.5 9 8 11 c4.5-2 8-6 8-11 V5 z"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 8 V6 M12 18 V16 M8 12 H6 M18 12 H16"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Secure Software Engineering{% else %}Sviluppo Software Sicuro{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Secure stack by design (Rust where possible), inspectable open source components, privacy by design.{% else %}Stack sicuro by design (Rust dove possibile), componenti open source ispezionabili, privacy by design.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">Rust</span><span class="fw-chip">{% if lang == 'en' %}Linux EU{% else %}Linux UE{% endif %}</span><span class="fw-chip">Open Source</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="6" r="2"/>
+            <circle cx="6" cy="18" r="2"/>
+            <circle cx="18" cy="6" r="2"/>
+            <path d="M6 8 V16 M6 12 H14 a4 4 0 0 0 4-4 V8"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Threat Modeling{% else %}Threat Modeling{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Threat modeling as a first-class citizen, at project kickoff. Not pre-release.{% else %}Threat modeling come first-class citizen, all'avvio del progetto. Non in pre-rilascio.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">STRIDE</span><span class="fw-chip">LINDDUN</span><span class="fw-chip">{% if lang == 'en' %}attack trees{% else %}attack trees{% endif %}</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="3" width="12" height="18" rx="2"/>
+            <path d="M9 3 V1 H15 V3"/>
+            <path d="M9 13 L11 15 L15 11"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Open Source Security &amp; SBOM{% else %}Open Source Security &amp; SBOM{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Audited dependencies, SBOM at build time, continuous vulnerability scanning.{% else %}Dipendenze auditate, SBOM al build, scansione vulnerabilità continua.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">SLSA</span><span class="fw-chip">CycloneDX</span><span class="fw-chip">SPDX</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+    </ul>
+
+    <p class="sol-standards-note">
+      {% if lang == 'en' %}
+        Secure by design, Open Source first, security built in from the first commit — not bolted on before release. Scope, deliverables and depth are tailored to each project.
+      {% else %}
+        Secure by design, Open Source first, sicurezza integrata dal primo commit — non aggiunta prima del rilascio. Scope, deliverable e profondità si calibrano sul singolo mandato.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Build it secure from day one.{% else %}Costruiamolo sicuro dal primo giorno.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        A product to build from scratch, a codebase to harden, a supply chain to put under control — let's talk.
+      {% else %}
+        Un prodotto da costruire da zero, una codebase da mettere in sicurezza, una supply chain da controllare — parliamone.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+</div>
+
+{% endblock %}

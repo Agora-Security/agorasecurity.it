@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set p = page | default(value=section) %}
+<article class="prose-page">
+  <header class="prose-header container container--narrow">
+    <h1 class="prose-title">{{ p.title }}</h1>
+    {% if p.description %}<p class="prose-lead">{{ p.description }}</p>{% endif %}
+  </header>
+
+  <div class="prose-page-layout container">
+    {% if p.toc and p.toc | length > 1 %}
+    <aside class="prose-toc" aria-label="{% if lang == 'en' %}On this page{% else %}In questa pagina{% endif %}">
+      <p class="prose-toc-label mono">// {% if lang == 'en' %}index{% else %}indice{% endif %}</p>
+      <ol class="prose-toc-list">
+        {% for h in p.toc %}
+          <li><a href="#{{ h.id }}">{{ h.title }}</a></li>
+        {% endfor %}
+      </ol>
+    </aside>
+    {% endif %}
+    <div class="prose prose-body">
+      {{ p.content | safe }}
+    </div>
+  </div>
+</article>
+{% endblock %}

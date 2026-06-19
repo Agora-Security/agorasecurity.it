@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sol-area--ai">
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        We bring AI into your organization.
+      {% else %}
+        Portiamo l'AI nella vostra organizzazione.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        We implement tailored AI solutions secure and private  by-design and by-default for clients: domain chatbots, agents, automations and sovereign architectures — local, on-premise or EU-only. From idea to deployment, with an expert always in the loop.
+      {% else %}
+        Implementiamo soluzioni AI su misura per i clienti: chatbot di dominio, agenti, automazioni e architetture sovrane — in locale, on-premise o EU-only. Dall'idea al deploy, con l'esperto sempre nel loop.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== SUB-CATEGORIES — 8 cards ============== #}
+<section class="section section--sol-categories" data-reveal data-marker="services">
+  <div class="container">
+    <ul class="sol-grid">
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="6" rx="1"/>
+            <rect x="3" y="14" width="18" height="6" rx="1"/>
+            <circle cx="7" cy="7" r="0.8" fill="currentColor"/>
+            <circle cx="7" cy="17" r="0.8" fill="currentColor"/>
+            <path d="M11 7 H17 M11 17 H17"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Sovereign AI Adoption{% else %}Adozione AI Sovrana{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Sovereign architectures — local, on-premise or EU-only. AI inside your infrastructure, with no data leaving.{% else %}Architetture sovrane — in locale, on-premise o EU-only. L'AI dentro la vostra infrastruttura, senza dati che escono.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">{% if lang == 'en' %}EU stack{% else %}Stack UE{% endif %}</span><span class="fw-chip">on-prem</span><span class="fw-chip">ISO/IEC 42001</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="6" r="2"/>
+            <circle cx="6" cy="18" r="2"/>
+            <circle cx="18" cy="6" r="2"/>
+            <path d="M6 8 V16 M6 12 H14 a4 4 0 0 0 4-4 V8"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}AI Agents &amp; Automation{% else %}Agenti AI &amp; Automazione{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Agents and automations that orchestrate real tasks, integrated with your systems via MCP and APIs.{% else %}Agenti e automazioni che orchestrano task reali, integrati con i vostri sistemi via MCP e API.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">Rust</span><span class="fw-chip">MCP</span><span class="fw-chip">mistral.rs</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15 a2 2 0 0 1 -2 2 H8 l-4 4 V5 a2 2 0 0 1 2-2 h13 a2 2 0 0 1 2 2 z"/>
+            <path d="M8 9 H16 M8 13 H13"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Domain Chatbots &amp; RAG{% else %}Chatbot di dominio &amp; RAG{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Assistants grounded in your own knowledge, with verifiable retrieval and citations.{% else %}Assistenti basati sulla vostra conoscenza, con retrieval verificabile e citazioni.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">RAG</span><span class="fw-chip">embeddings</span><span class="fw-chip">{% if lang == 'en' %}EU stack{% else %}Stack UE{% endif %}</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <path d="M14 17.5 H21 M17.5 14 V21"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}AI in Products &amp; Workflows{% else %}AI in prodotti e processi{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}We embed AI into existing products and workflows, from idea and feasibility to deployment.{% else %}Integriamo l'AI in prodotti e flussi di lavoro esistenti, dall'idea e fattibilità fino al deploy.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">API</span><span class="fw-chip">LLM</span><span class="fw-chip">{% if lang == 'en' %}integration{% else %}integrazione{% endif %}</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+    </ul>
+
+    <p class="sol-standards-note">
+      {% if lang == 'en' %}
+        Adoption is one part of the picture: AI compliance (AI Act) lives in GRC, model defense in Cyber Defense, and LLM red teaming in Cyber Offense.
+      {% else %}
+        L'adozione è una parte del quadro: la conformità dell'AI (AI Act) vive in GRC, la difesa dei modelli in Cyber Defense, il red teaming degli LLM in Cyber Offense.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Let's talk AI.{% else %}Parliamo di AI.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Building a product with AI inside, adopting AI on-premise, or automating with agents — we can help.
+      {% else %}
+        State costruendo un prodotto con AI integrata, adottando AI on-premise, o automatizzando con agenti — possiamo aiutarvi.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+</div>
+
+{% endblock %}

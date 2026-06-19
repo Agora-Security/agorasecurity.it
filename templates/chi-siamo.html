@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--chi-hero" data-reveal>
+  <div class="container">
+    <div class="chi-hero-body">
+      <h1 class="chi-hero-title">
+        {% if lang == 'en' %}
+          <span class="chi-hero-accent">AI-native</span> cyber<br>resilience, from Italy.
+        {% else %}
+          Cyber resilienza<br><span class="chi-hero-accent">AI-native</span>, dall'Italia.
+        {% endif %}
+      </h1>
+    </div>
+  </div>
+</section>
+
+{# ============== EDITORIAL — chi siamo / approccio / mission ============== #}
+<section class="section section--chi-editorial" data-reveal data-marker="about">
+  <div class="container container--narrow">
+    <article class="chi-editorial">
+
+      <div class="chi-block" data-stagger>
+        <h2 class="chi-block-label">
+          {% if lang == 'en' %}Who we are.{% else %}Chi siamo.{% endif %}
+        </h2>
+        <p class="chi-block-text">
+          {% if lang == 'en' %}
+            Agorà Security is an Italian cybersecurity startup. We bring together a multidisciplinary team — the founders' experience and the energy of a young crew — and amplify its skills with artificial intelligence, to offer companies a level of protection that matches today's threats.
+          {% else %}
+            Agorà Security è una startup italiana di cybersecurity. Mettiamo insieme un team multidisciplinare — l'esperienza dei founder e l'energia di una squadra giovane — e ne potenziamo le competenze con l'intelligenza artificiale, per offrire alle aziende un livello di protezione all'altezza delle minacce di oggi.
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="chi-block" data-stagger>
+        <h2 class="chi-block-label">
+          {% if lang == 'en' %}Approach.{% else %}Approccio.{% endif %}
+        </h2>
+        <p class="chi-block-text">
+          {% if lang == 'en' %}
+            Artificial intelligence embedded in our work to move faster and deeper, never in place of people. End-to-end European technology, clear contracts.
+          {% else %}
+            Intelligenza artificiale dentro al nostro lavoro per andare più veloci e più in profondità, mai al posto delle persone. Tecnologia europea end-to-end, codice ispezionabile, contratti chiari.
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="chi-block" data-stagger>
+        <h2 class="chi-block-label">
+          {% if lang == 'en' %}Mission.{% else %}Mission.{% endif %}
+        </h2>
+        <p class="chi-block-text">
+          {% if lang == 'en' %}
+            Build the next generation of European cybersecurity services: AI-native, sovereign, transparent. We want to be the go-to partner for those who need someone fluent in the language of innovation and in that of compliance — with no compromises on either.
+          {% else %}
+            Costruire la prossima generazione di servizi di cybersecurity europei: AI-native, sovrani, trasparenti. Vogliamo essere il riferimento per chi cerca un partner che parli la lingua dell'innovazione e quella della conformità — senza compromessi su nessuna delle due.
+          {% endif %}
+        </p>
+      </div>
+
+    </article>
+  </div>
+</section>
+
+{# ============== CTA — conversazionale ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}
+        Let's talk cybersecurity.
+      {% else %}
+        Parliamo di cybersecurity.
+      {% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Whatever your starting point — a need, a question, a project — we're here to listen. Write to us, we read everything.
+      {% else %}
+        Qualunque sia il tuo punto di partenza — un'esigenza, un dubbio, un progetto — siamo qui per ascoltarlo. Scrivici, leggiamo tutto.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--partners-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="partners-hero-title">
+      {% if lang == 'en' %}Partners.{% else %}Partner.{% endif %}
+    </h1>
+    <p class="partners-hero-lead">
+      {% if lang == 'en' %}
+        We build cyber resilience together with technology and strategic partners that share our principles — sovereign, transparent, accountable. No vendor lock-in dressed up as an alliance.
+      {% else %}
+        Costruiamo cyber resilienza insieme a partner tecnologici e strategici che condividono i nostri principi: sovrana, trasparente, affidabile. Niente vendor lock-in mascherato da alleanza.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== ARGOGRA — founding member featured ============== #}
+<section class="section section--partners-argogra" data-reveal data-marker="network">
+  <div class="container">
+    <article class="partners-argogra">
+
+      <header class="partners-argogra-head">
+        <h2 class="partners-argogra-title"><a href="{{ config.extra.argogra }}" target="_blank" rel="noopener">ARGOGRA</a></h2>
+        <p class="partners-argogra-motto">&ldquo;Ut Opera Ita Desideria&rdquo;</p>
+        <p class="partners-argogra-text">
+          {% if lang == 'en' %}
+            ARGOGRA is the <strong>business network</strong> Agorà Security belongs to. It brings together professionals and companies driven by a shared ambition to reshape how business is done in Italy: through ARGOGRA we plug into a multidisciplinary network of services and expertise far broader than what a single startup could offer on its own.
+          {% else %}
+            ARGOGRA è una <strong>rete d'impresa</strong> di cui Agorà Security fa parte. Riunisce professionisti e aziende mossi dal desiderio di rivoluzionare il modo di fare impresa in Italia: attraverso ARGOGRA accediamo a un network multidisciplinare di servizi e competenze ben più ampio di quanto una singola startup potrebbe offrire da sola.
+          {% endif %}
+        </p>
+      </header>
+
+      <ul class="partners-argogra-stats" aria-label="ARGOGRA network" id="argogra-stats">
+        <li class="partners-stat">
+          <span class="partners-stat-value">24</span>
+          <span class="partners-stat-label">{% if lang == 'en' %}companies{% else %}aziende{% endif %}</span>
+        </li>
+        <li class="partners-stat">
+          <span class="partners-stat-value">720</span>
+          <span class="partners-stat-label">{% if lang == 'en' %}people{% else %}persone{% endif %}</span>
+        </li>
+        <li class="partners-stat">
+          <span class="partners-stat-value">420</span>
+          <span class="partners-stat-label">{% if lang == 'en' %}clients{% else %}clienti{% endif %}</span>
+        </li>
+        <li class="partners-stat">
+          <span class="partners-stat-value">8 135</span>
+          <span class="partners-stat-label">{% if lang == 'en' %}cumulative years of experience{% else %}anni di esperienza cumulati{% endif %}</span>
+        </li>
+        <li class="partners-stat">
+          <span class="partners-stat-value">&euro;65M</span>
+          <span class="partners-stat-label">{% if lang == 'en' %}aggregate revenue{% else %}fatturato aggregato{% endif %}</span>
+        </li>
+      </ul>
+      <p class="partners-argogra-source mono">
+        {% if lang == 'en' %}Aggregated network data, 2026 — source: ARGOGRA.{% else %}Dati aggregati della rete, 2026 — fonte: ARGOGRA.{% endif %}
+      </p>
+
+    </article>
+  </div>
+</section>
+
+{# ============== PARTNER STRATEGICI ============== #}
+<section class="section section--partners-list" data-reveal data-marker="strategic">
+  <div class="container container--narrow">
+    <header class="partners-section-head">
+      <h2 class="partners-section-title">
+        {% if lang == 'en' %}Strategic partners.{% else %}Partner strategici.{% endif %}
+      </h2>
+      <p class="partners-section-sub">
+        {% if lang == 'en' %}
+          Long-term alliances with organisations whose work complements ours — legal, insurance, IT services, business networks.
+        {% else %}
+          Alleanze di lungo periodo con organizzazioni la cui pratica si integra con la nostra — legale, assicurativo, IT services, business network.
+        {% endif %}
+      </p>
+    </header>
+
+    <ul class="partners-grid partners-grid--strategic">
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">A</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">ARGOGRA</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}business network{% else %}business network{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">S</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Schinasi Insurance Brokers</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}cyber insurance broker{% else %}broker assicurativo cyber{% endif %}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{# ============== PARTNER TECNOLOGICI ============== #}
+<section class="section section--partners-list section--partners-tech" data-reveal data-marker="technology">
+  <div class="container">
+    <header class="partners-section-head">
+      <h2 class="partners-section-title">
+        {% if lang == 'en' %}Technology partners.{% else %}Partner tecnologici.{% endif %}
+      </h2>
+      <p class="partners-section-sub">
+        {% if lang == 'en' %}
+          Vendors and platforms we deploy, integrate and operate inside client engagements — selected by the same criteria we apply to any technology choice: sovereign where possible, inspectable, accountable.
+        {% else %}
+          Vendor e piattaforme che integriamo e gestiamo nei progetti — selezionati con gli stessi criteri che applichiamo a qualunque scelta tecnologica: sovrane dove possibile, ispezionabili, affidabili.
+        {% endif %}
+      </p>
+    </header>
+
+    <ul class="partners-grid partners-grid--tech">
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">Z</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Zenarmor</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}next-gen firewall · NDR{% else %}firewall NGFW · NDR{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">M</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Monokee</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}identity &amp; access mgmt{% else %}identity &amp; access mgmt{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">S</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Sublime Security</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}AI-driven email security{% else %}AI-driven email security{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">E</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Equixly</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}API security{% else %}API security{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">C</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Corelight</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}network detection &amp; response{% else %}network detection &amp; response{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">H</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Huntress</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}managed EDR · MDR · ITDR{% else %}managed EDR · MDR · ITDR{% endif %}</p>
+        </div>
+      </li>
+      <li class="partner-tile" data-stagger>
+        <span class="partner-monogram" aria-hidden="true">G</span>
+        <div class="partner-tile-body">
+          <h3 class="partner-tile-name">Gamindo</h3>
+          <p class="partner-tile-cat mono">{% if lang == 'en' %}gamified security awareness{% else %}security awareness gamificata{% endif %}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{# ============== CTA — diventa partner ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Become a partner.{% else %}Diventa partner.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        We're looking for technology and channel partners who share our vision of sovereign, AI-native cybersecurity.
+      {% else %}
+        Cerchiamo partner tecnologici e di canale che condividano la nostra visione di cybersecurity sovrana e AI-native.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Propose a partnership &rarr;{% else %}Proponi una partnership &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

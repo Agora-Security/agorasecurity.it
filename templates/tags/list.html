@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container container--narrow" style="padding-block: var(--sp-7) var(--sp-9);">
+  <h1 class="prose-title">{% if lang == 'en' %}All tags{% else %}Tutti i tag{% endif %}</h1>
+
+  {% if terms %}
+    <ul class="post-list">
+      {% for term in terms %}
+        <li class="post-card">
+          <h2 class="post-title">
+            <a href="{{ term.permalink | safe }}">#{{ term.name }}</a>
+          </h2>
+          <p class="post-meta mono">{{ term.pages | length }} {% if lang == 'en' %}post{% else %}articol{% if term.pages | length == 1 %}o{% else %}i{% endif %}{% endif %}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state">{% if lang == 'en' %}No tags yet.{% else %}Nessun tag per ora.{% endif %}</p>
+  {% endif %}
+</section>
+{% endblock %}

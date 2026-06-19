@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--trust-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="trust-hero-title">
+      {% if lang == 'en' %}
+        Trust is <span class="trust-hero-accent">earned</span>, not claimed.
+      {% else %}
+        La fiducia si <span class="trust-hero-accent">guadagna</span>, non si dichiara.
+      {% endif %}
+    </h1>
+    <p class="trust-hero-lead">
+      {% if lang == 'en' %}
+        We hold ourselves to the same standards we help our clients meet. Three accredited certifications, one integrated policy, and the evidence that backs them — published in full, not behind a sales gate.
+      {% else %}
+        Applichiamo a noi stessi gli stessi standard che aiutiamo i clienti a raggiungere. Tre certificazioni accreditate, una policy integrata e le evidenze che le sostengono — pubblicate per intero, non dietro un gate commerciale.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CERTIFICAZIONI — dettaglio esteso ============== #}
+<section class="section section--trust-certs" data-reveal data-marker="certifications">
+  <div class="container">
+    <header class="trust-section-head">
+      <h2 class="trust-section-title">
+        {% if lang == 'en' %}Accredited certifications{% else %}Certificazioni accreditate{% endif %}
+      </h2>
+      <p class="trust-section-sub">
+        {% if lang == 'en' %}
+          Three ISO standards, certified by an accredited body. Each governs a distinct piece of the Integrated Management System: information security, cloud-specific controls, and service quality.
+        {% else %}
+          Tre standard ISO, certificati da un organismo accreditato. Ciascuno governa una parte distinta del Sistema di Gestione Integrato: sicurezza delle informazioni, controlli cloud-specifici, qualità del servizio.
+        {% endif %}
+      </p>
+    </header>
+
+    <ol class="trust-cert-list">
+
+      {# --- ISO/IEC 27001:2022 --- #}
+      <li class="trust-cert trust-cert--27001" data-stagger>
+        <div class="trust-cert-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="120" height="120">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <text x="50" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.5">ISO/IEC</text>
+            <text x="50" y="60" text-anchor="middle" font-family="Merriweather, serif" font-size="18" font-weight="900" fill="currentColor">27001</text>
+            <text x="50" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7">2022</text>
+          </svg>
+        </div>
+        <div class="trust-cert-body">
+          <p class="trust-cert-eyebrow mono">{% if lang == 'en' %}Information Security Management{% else %}Sistema di Gestione della Sicurezza delle Informazioni{% endif %}</p>
+          <h3 class="trust-cert-name">ISO/IEC 27001:2022</h3>
+          <p class="trust-cert-desc">
+            {% if lang == 'en' %}
+              The international reference standard for an Information Security Management System (ISMS). Our ISMS covers all 93 controls of Annex A, with applicability declared in the Statement of Applicability and a risk treatment plan that ties each control to a specific threat scenario.
+            {% else %}
+              Lo standard internazionale di riferimento per un Sistema di Gestione della Sicurezza delle Informazioni (SGSI). Il nostro SGSI copre tutti i 93 controlli dell'Allegato A, con applicabilità dichiarata nello Statement of Applicability e un piano di trattamento del rischio che lega ciascun controllo a uno scenario di minaccia specifico.
+            {% endif %}
+          </p>
+          <dl class="trust-cert-meta">
+            <div>
+              <dt>{% if lang == 'en' %}Scope{% else %}Scope{% endif %}</dt>
+              <dd>{% if lang == 'en' %}Advisory services, secure software development, SaaS operation, customer-data handling.{% else %}Servizi di advisory, sviluppo software sicuro, operatività SaaS, trattamento dei dati cliente.{% endif %}</dd>
+            </div>
+            <div>
+              <dt>{% if lang == 'en' %}Version{% else %}Versione{% endif %}</dt>
+              <dd>2022 — {% if lang == 'en' %}latest revision, replaces 27001:2013/2017{% else %}revisione corrente, sostituisce 27001:2013/2017{% endif %}</dd>
+            </div>
+            <div>
+              <dt>{% if lang == 'en' %}Controls{% else %}Controlli{% endif %}</dt>
+              <dd>{% if lang == 'en' %}93 across four themes — organizational, people, physical, technological{% else %}93 articolati in quattro temi — organizzativi, persone, fisici, tecnologici{% endif %}</dd>
+            </div>
+          </dl>
+        </div>
+      </li>
+
+      {# --- ISO/IEC 27017:2015 --- #}
+      <li class="trust-cert trust-cert--27017" data-stagger>
+        <div class="trust-cert-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="120" height="120">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <text x="50" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.5">ISO/IEC</text>
+            <text x="50" y="60" text-anchor="middle" font-family="Merriweather, serif" font-size="18" font-weight="900" fill="currentColor">27017</text>
+            <text x="50" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7">2015</text>
+          </svg>
+        </div>
+        <div class="trust-cert-body">
+          <p class="trust-cert-eyebrow mono">{% if lang == 'en' %}Cloud-Specific Security Controls{% else %}Controlli di Sicurezza Cloud{% endif %}</p>
+          <h3 class="trust-cert-name">ISO/IEC 27017:2015</h3>
+          <p class="trust-cert-desc">
+            {% if lang == 'en' %}
+              The cloud-security companion to ISO/IEC 27001 — it extends the ISMS with seven cloud-specific controls and additional guidance for the 27002 set. It explicitly distinguishes the obligations of the Cloud Service Customer (CSC) from those of the Cloud Service Provider (CSP). We operate as both, and we hold each role to the standard.
+            {% else %}
+              Il companion di ISO/IEC 27001 per la sicurezza cloud — estende l'ISMS con sette controlli cloud-specifici e linee guida aggiuntive per il set 27002. Distingue esplicitamente gli obblighi del Cloud Service Customer (CSC) da quelli del Cloud Service Provider (CSP). Noi operiamo in entrambi i ruoli, e ciascuno è tenuto allo standard.
+            {% endif %}
+          </p>
+          <dl class="trust-cert-meta">
+            <div>
+              <dt>{% if lang == 'en' %}Our role{% else %}Ruolo{% endif %}</dt>
+              <dd>{% if lang == 'en' %}CSC + CSP — we consume cloud services and we deliver them{% else %}CSC + CSP — consumiamo servizi cloud e li eroghiamo{% endif %}</dd>
+            </div>
+            <div>
+              <dt>{% if lang == 'en' %}Coverage{% else %}Copertura{% endif %}</dt>
+              <dd>{% if lang == 'en' %}Applied on top of ISO/IEC 27001:2022 via the cloud-specific section of the Statement of Applicability{% else %}Applicato sopra ISO/IEC 27001:2022 tramite la sezione cloud-specifica dello Statement of Applicability{% endif %}</dd>
+            </div>
+            <div>
+              <dt>{% if lang == 'en' %}Topics{% else %}Aree{% endif %}</dt>
+              <dd>{% if lang == 'en' %}Shared responsibility, tenant isolation, virtual environment hardening, administrative ops, cloud monitoring, alignment of cloud agreements with security policy{% else %}Responsabilità condivisa, isolamento dei tenant, hardening dell'ambiente virtuale, operatività amministrativa, monitoraggio cloud, allineamento dei contratti cloud alla policy di sicurezza{% endif %}</dd>
+            </div>
+          </dl>
+        </div>
+      </li>
+
+      {# --- ISO 9001:2015 --- #}
+      <li class="trust-cert trust-cert--9001" data-stagger>
+        <div class="trust-cert-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="120" height="120">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <text x="50" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.5">ISO</text>
+            <text x="50" y="62" text-anchor="middle" font-family="Merriweather, serif" font-size="20" font-weight="900" fill="currentColor">9001</text>
+            <text x="50" y="78" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7">2015</text>
+          </svg>
+        </div>
+        <div class="trust-cert-body">
+          <p class="trust-cert-eyebrow mono">{% if lang == 'en' %}Quality Management{% else %}Sistema di Gestione della Qualità{% endif %}</p>
+          <h3 class="trust-cert-name">ISO 9001:2015</h3>
+          <p class="trust-cert-desc">
+            {% if lang == 'en' %}
+              The reference standard for quality management. The current version is amended by Amendment 1:2024 (climate-action changes), which is reflected in our Quality Management System. The QMS is integrated with the ISMS into a single Integrated Management System — one set of objectives, one set of audits, one set of evidence.
+            {% else %}
+              Lo standard di riferimento per la gestione della qualità. La versione corrente è integrata dall'Amendment 1:2024 (climate-action changes), che è rispecchiato nel nostro Sistema di Gestione della Qualità. Il SGQ è integrato con il SGSI in un unico Sistema di Gestione Integrato — un solo set di obiettivi, di audit, di evidenze.
+            {% endif %}
+          </p>
+          <dl class="trust-cert-meta">
+            <div>
+              <dt>{% if lang == 'en' %}Scope{% else %}Scope{% endif %}</dt>
+              <dd>{% if lang == 'en' %}Repeatable, measurable, continuously improving delivery of advisory services and software products{% else %}Erogazione ripetibile, misurabile e in miglioramento continuo dei servizi di advisory e dei prodotti software{% endif %}</dd>
+            </div>
+            <div>
+              <dt>{% if lang == 'en' %}Version{% else %}Versione{% endif %}</dt>
+              <dd>2015 + Amd.1:2024 ({% if lang == 'en' %}climate action{% else %}azione climatica{% endif %})</dd>
+            </div>
+            <div>
+              <dt>{% if lang == 'en' %}Integration{% else %}Integrazione{% endif %}</dt>
+              <dd>{% if lang == 'en' %}Operated jointly with ISO/IEC 27001:2022 and ISO/IEC 27017:2015 in a single Integrated Management System{% else %}Esercito congiuntamente a ISO/IEC 27001:2022 e ISO/IEC 27017:2015 in un unico Sistema di Gestione Integrato{% endif %}</dd>
+            </div>
+          </dl>
+        </div>
+      </li>
+
+    </ol>
+
+    {# --- Certificati scaricabili --- #}
+    <div class="trust-downloads">
+      <h3 class="trust-downloads-title">{% if lang == 'en' %}Downloadable certificates{% else %}Certificati scaricabili{% endif %}</h3>
+      <p class="trust-downloads-sub">
+        {% if lang == 'en' %}
+          The signed certificates issued by our accredited body. ISO/IEC 27017 is included in the ISO/IEC 27001 certificate.
+        {% else %}
+          I certificati firmati rilasciati dal nostro organismo accreditato. ISO/IEC 27017 è incluso nel certificato ISO/IEC 27001.
+        {% endif %}
+      </p>
+      <ul class="trust-download-list">
+        <li>
+          <a class="trust-download" href="{{ get_url(path='docs/certificato-iso-27001_EN.pdf') }}" download>
+            <span class="trust-download-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v6M9 15l3 3 3-3"/></svg>
+            </span>
+            <span class="trust-download-body">
+              <span class="trust-download-name">ISO/IEC 27001:2022</span>
+              <span class="trust-download-meta mono">PDF</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="trust-download" href="{{ get_url(path='docs/certificato-iso-27001_EN.pdf') }}" download>
+            <span class="trust-download-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v6M9 15l3 3 3-3"/></svg>
+            </span>
+            <span class="trust-download-body">
+              <span class="trust-download-name">ISO/IEC 27017:2015</span>
+              <span class="trust-download-meta mono">PDF</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="trust-download" href="{{ get_url(path='docs/certificato-iso-9001_EN.pdf') }}" download>
+            <span class="trust-download-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v6M9 15l3 3 3-3"/></svg>
+            </span>
+            <span class="trust-download-body">
+              <span class="trust-download-name">ISO 9001:2015</span>
+              <span class="trust-download-meta mono">PDF</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# ============== POLICY INTEGRATA ============== #}
+<section class="section section--trust-policy" data-reveal data-marker="policy">
+  <div class="container container--narrow">
+    <div class="trust-policy-card">
+      <div class="trust-policy-meta">
+        <h2 class="trust-policy-title">
+          {% if lang == 'en' %}
+            Integrated Quality and Information Security Policy
+          {% else %}
+            Policy Integrata Qualità e Sicurezza delle Informazioni
+          {% endif %}
+        </h2>
+        <p class="trust-policy-lead">
+          {% if lang == 'en' %}
+            The top-level policy of our Integrated Management System. Sets the commitment of top management, the strategic objectives, the principles, the framework scoping and the cloud role declaration. Anchors every subordinate policy, procedure and register.
+          {% else %}
+            La policy di vertice del nostro Sistema di Gestione Integrato. Fissa l'impegno della direzione, gli obiettivi strategici, i principi, lo scope dei framework e la dichiarazione di ruolo cloud. È l'ancora di tutte le policy, procedure e registri subordinati.
+          {% endif %}
+        </p>
+        <ul class="trust-policy-points">
+          <li>{% if lang == 'en' %}Scope &amp; commitment of top management{% else %}Scope e impegno della direzione{% endif %}</li>
+          <li>{% if lang == 'en' %}Strategic objectives &amp; principles (12){% else %}Obiettivi strategici e principi (12){% endif %}</li>
+          <li>{% if lang == 'en' %}Framework scoping statement (in-scope, informative, out-of-scope, future){% else %}Scope dei framework (in-scope, informativi, out-of-scope, futuri){% endif %}</li>
+          <li>{% if lang == 'en' %}Cloud role declaration (CSC + CSP){% else %}Dichiarazione di ruolo cloud (CSC + CSP){% endif %}</li>
+          <li>{% if lang == 'en' %}Compliance, review &amp; communication framework{% else %}Compliance, riesame e quadro di comunicazione{% endif %}</li>
+        </ul>
+      </div>
+      <a class="trust-policy-cta" href="{{ get_url(path='@/trust-center/policy-qualita-sicurezza/_index.md', lang=lang) }}">
+        <span class="trust-policy-cta-label">{% if lang == 'en' %}Read the full policy{% else %}Leggi la policy integrale{% endif %}</span>
+        <span class="trust-policy-cta-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<style>
+  /* Critical CSS hero — inline per evitare layout shift */
+  #hero { position: relative; height: 100svh; min-height: 600px; max-height: 920px; overflow: hidden; }
+  #hero-stage { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{# ============== HERO — statico, sfondo immagine ============== #}
+<section id="hero" aria-labelledby="hero-title">
+  <div id="hero-stage">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="hero-content container">
+      <h1 id="hero-title" class="hero-title">
+        <span class="hero-line">Your <span class="hero-accent">AI-Native</span><br>Cyber Resilience Partner</span>
+      </h1>
+      <p class="hero-lead">
+        {% if lang == 'en' %}
+          An Italian cybersecurity startup. A multidisciplinary team that blends the founders' experience with the energy of a young crew — with AI in the workflow and a sovereign European stack.
+        {% else %}
+          Startup italiana di cybersecurity. Un team multidisciplinare che unisce l'esperienza dei founder all'energia di una squadra giovane — con l'AI nel workflow e uno stack sovrano europeo.
+        {% endif %}
+      </p>
+      <p class="hero-cta">
+        <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/soluzioni/_index.md', lang=lang) }}">
+          {% if lang == 'en' %}Solutions{% else %}Soluzioni{% endif %} &rarr;
+        </a>
+        <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/chi-siamo/_index.md', lang=lang) }}">
+          {% if lang == 'en' %}About us{% else %}Chi siamo{% endif %} &rarr;
+        </a>
+        <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+          {% if lang == 'en' %}Contact{% else %}Contatti{% endif %} &rarr;
+        </a>
+      </p>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>scroll</span>
+      <svg width="14" height="22" viewBox="0 0 14 22"><path d="M7 1v18M1 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</section>
+
+{# ============== SERVIZI (teaser) — una visione integrata ============== #}
+<section class="section section--solutions" data-reveal data-marker="services">
+  <div class="container">
+    <h2 class="section-title">
+      {% if lang == 'en' %}One integrated vision.{% else %}Una visione integrata.{% endif %}
+    </h2>
+    <p class="section-lead">
+      {% if lang == 'en' %}
+        From compliance to active defense, from red teaming to AI: a single partner for all of cybersecurity. We build AI and software with our own cyber competencies: compliant, secure, and stress-tested by our own ethical hackers.
+      {% else %}
+        Dalla compliance alla difesa attiva, dal red teaming all'AI: un partner unico per tutta la cybersecurity. AI e sviluppo software li costruiamo con le nostre competenze cyber: conformi, sicuri e messi alla prova dai nostri ethical hacker.
+      {% endif %}
+    </p>
+
+    <div class="pillars-layout">
+
+      {# --- AI — fascia orizzontale, stesso stile dei box --- #}
+      <a class="solution-row solution-row--ai solution-row--wide" href="{{ get_url(path='@/soluzioni/ai-security/_index.md', lang=lang) }}">
+        <div class="solution-row-content">
+          <h3 class="solution-row-title">AI Adoption</h3>
+          <p class="solution-row-desc">
+            {% if lang == 'en' %}We implement tailored AI solutions secure and private  by-design and by-default for clients: domain chatbots, agents, automations and sovereign architectures — local, on-premise or EU-only. From idea to deployment, with an expert always in the loop.{% else %}Implementiamo soluzioni AI su misura per i clienti: chatbot di dominio, agenti, automazioni e architetture sovrane — in locale, on-premise o EU-only. Dall'idea al deploy, con l'esperto sempre nel loop.{% endif %}
+          </p>
+          <p class="solution-row-tags"><span class="fw-chip">{% if lang == 'en' %}EU stack{% else %}Stack UE{% endif %}</span><span class="fw-chip">on-prem</span><span class="fw-chip">RAG</span><span class="fw-chip">MCP</span><span class="fw-chip">ISO/IEC 42001</span></p>
+        </div>
+        <span class="solution-row-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      {# --- 3 pillar centrali (verticali, descrizione lunga + tag) --- #}
+      <ul class="solution-rows solution-rows--3">
+        <li>
+          <a class="solution-row solution-row--compliance" href="{{ get_url(path='@/soluzioni/compliance/_index.md', lang=lang) }}">
+            <div class="solution-row-content">
+              <h3 class="solution-row-title">Governance, Risk &amp; Compliance</h3>
+              <p class="solution-row-desc">
+                {% if lang == 'en' %}European regulations — NIS 2, DORA, AI Act, CRA — aren't checklists, but control systems that share evidence, processes and accountability. We map real requirements onto operational context, build ISMS that withstand audit, and design supplier governance anchored in quantified risk. Documentation that describes what exists — not the other way around.{% else %}Le normative europee — NIS 2, DORA, AI Act, CRA — non sono checklist, ma sistemi di controllo che condividono evidenze, processi e responsabilità. Mappiamo i requisiti reali sul contesto operativo, costruiamo ISMS che reggono l'audit, governance dei fornitori ancorata al rischio quantificato. Documentazione che descrive ciò che esiste — non il contrario.{% endif %}
+              </p>
+              <p class="solution-row-tags"><span class="fw-chip">NIS 2</span><span class="fw-chip">DORA</span><span class="fw-chip">ISO 27001</span><span class="fw-chip">GDPR</span><span class="fw-chip">AI Act</span><span class="fw-chip">CRA</span><span class="fw-chip">Data Act</span></p>
+            </div>
+            <span class="solution-row-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="solution-row solution-row--defense" href="{{ get_url(path='@/soluzioni/cyber-defense/_index.md', lang=lang) }}">
+            <div class="solution-row-content">
+              <h3 class="solution-row-title">Cyber Defense</h3>
+              <p class="solution-row-desc">
+                {% if lang == 'en' %}Incident response starts long before the incident. Hypothesis-driven threat hunting, detection engineering anchored to real-world TTPs, tabletop exercises and simulations that stress-test runbooks and decision chains. When the attack lands, forensic acquisition and triage are already organisational muscle — not improvised crisis management.{% else %}L'incident response inizia molto prima dell'incidente. Threat hunting guidato da ipotesi, detection engineering ancorato a TTP reali, tabletop e simulazioni che mettono sotto pressione runbook e catena decisionale. Quando l'attacco arriva, acquisizione forense e triage sono già muscolo organizzativo — non emergenza improvvisata.{% endif %}
+              </p>
+              <p class="solution-row-tags"><span class="fw-chip">MITRE ATT&amp;CK</span><span class="fw-chip">NIST SP 800-61</span><span class="fw-chip">MITRE D3FEND</span><span class="fw-chip">ISO 27035</span><span class="fw-chip">STIX/TAXII</span><span class="fw-chip">ENISA CSIRT</span></p>
+            </div>
+            <span class="solution-row-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="solution-row solution-row--offense" href="{{ get_url(path='@/soluzioni/cyber-offense/_index.md', lang=lang) }}">
+            <div class="solution-row-content">
+              <h3 class="solution-row-title">Cyber Offense</h3>
+              <p class="solution-row-desc">
+                {% if lang == 'en' %}A well-executed penetration test isn't a CVE catalogue: it reconstructs plausible kill chains against the real attack surface. From a single asset to end-to-end red team operations with agreed objectives, from legacy Active Directory to cloud control planes, all the way to LLMs in production. We report what held, what broke, and why.{% else %}Un penetration test ben fatto non cataloga CVE: ricostruisce le kill chain plausibili contro la superficie d'attacco reale. Dal singolo asset all'operazione red team end-to-end con obiettivi concordati, dalle Active Directory legacy al control plane cloud, fino agli LLM in produzione. Riportiamo ciò che ha tenuto, ciò che ha ceduto e perché.{% endif %}
+              </p>
+              <p class="solution-row-tags"><span class="fw-chip">OWASP ASVS</span><span class="fw-chip">MITRE ATT&amp;CK</span><span class="fw-chip">NIST SP 800-115</span><span class="fw-chip">OSSTMM</span><span class="fw-chip">OWASP LLM Top 10</span><span class="fw-chip">TIBER-EU</span></p>
+            </div>
+            <span class="solution-row-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+
+      {# --- Sviluppo — fascia orizzontale, stesso stile dei box --- #}
+      <a class="solution-row solution-row--dev solution-row--wide" href="{{ get_url(path='@/soluzioni/sviluppo-software/_index.md', lang=lang) }}">
+        <div class="solution-row-content">
+          <h3 class="solution-row-title">{% if lang == 'en' %}Secure Software Engineering{% else %}Sviluppo Software Sicuro{% endif %}</h3>
+          <p class="solution-row-desc">
+            {% if lang == 'en' %}Security starts in the code. We develop secure custom software and proprietary products — memory-safe by design in Rust, with threat modeling at kickoff and an SBOM at build time.{% else %}La sicurezza parte dal codice. Sviluppiamo software sicuro su misura e prodotti proprietari — memory-safe by design in Rust, con threat modeling all'avvio e SBOM a build time.{% endif %}
+          </p>
+          <p class="solution-row-tags"><span class="fw-chip">Rust</span><span class="fw-chip">Open Source</span><span class="fw-chip">SBOM</span><span class="fw-chip">SLSA</span><span class="fw-chip">Threat Modeling</span></p>
+        </div>
+        <span class="solution-row-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+    </div>
+
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/soluzioni/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Explore the services &rarr;{% else %}Esplora i servizi &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{# ============== CHI SIAMO (dopo i servizi) ============== #}
+<section class="section section--narrative" data-reveal data-marker="about">
+  <div class="container container--narrow">
+    <h2 class="section-title">
+      {% if lang == 'en' %}
+        An Italian AI-native cybersecurity startup.
+      {% else %}
+        Una startup italiana di cybersecurity AI-native.
+      {% endif %}
+    </h2>
+    <p class="section-lead">
+      {% if lang == 'en' %}
+        <span class="dropcap">W</span>e bring together a multidisciplinary team — the founders' experience and the energy of a young crew — and amplify its skills with artificial intelligence, to offer companies a level of protection that matches today's threats.
+      {% else %}
+        <span class="dropcap">M</span>ettiamo insieme un team multidisciplinare — l'esperienza dei founder e l'energia di una squadra giovane — e ne potenziamo le competenze con l'intelligenza artificiale, per offrire alle aziende un livello di protezione all'altezza delle minacce di oggi.
+      {% endif %}
+    </p>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/chi-siamo/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Meet the team &rarr;{% else %}Conosci il team &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{# ============== APPROCCIO (intro) — dettaglio sulla pagina dedicata ============== #}
+<section class="section section--principles section--approach-intro" data-reveal data-marker="approach">
+  <div class="container container--narrow">
+    <h2 class="section-title">
+      {% if lang == 'en' %}Our approach{% else %}Il nostro approccio{% endif %}
+    </h2>
+    <p class="section-lead">
+      {% if lang == 'en' %}
+        AI-native cybersecurity, with people always in command. European and sovereign technology, transparent and verifiable choices, and the same standards we ask of our clients applied first to ourselves — five principles guide every decision we make.
+      {% else %}
+        Cybersecurity AI-native, ma con le persone sempre al comando. Tecnologia europea e sovrana, scelte trasparenti e verificabili, e gli stessi standard che chiediamo ai clienti applicati prima di tutto a noi — cinque principi guidano ogni nostra decisione.
+      {% endif %}
+    </p>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/approccio/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Discover our approach &rarr;{% else %}Scopri il nostro approccio &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{# ============== CERTIFICAZIONI (visualmente forti) ============== #}
+<section class="section section--certifications" data-reveal data-marker="certifications">
+  <div class="container">
+    <h2 class="section-title">
+      {% if lang == 'en' %}
+        The standards we implement for you, we meet first.
+      {% else %}
+        Gli standard che implementiamo per voi, li rispettiamo per primi.
+      {% endif %}
+    </h2>
+    <ul class="cert-grid">
+      <li class="cert-card cert-card--featured">
+        <div class="cert-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="84" height="84">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <text x="50" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.5">ISO/IEC</text>
+            <text x="50" y="60" text-anchor="middle" font-family="Merriweather, serif" font-size="18" font-weight="900" fill="currentColor">27001</text>
+            <text x="50" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7">2022</text>
+          </svg>
+        </div>
+        <div class="cert-body">
+          <span class="cert-label mono">{% if lang == 'en' %}Information Security{% else %}Sicurezza delle Informazioni{% endif %}</span>
+          <h3 class="cert-name">ISO/IEC 27001:2022</h3>
+          <p>{% if lang == 'en' %}Our Information Security Management System is certified to the latest international standard.{% else %}Il nostro Sistema di Gestione della Sicurezza delle Informazioni è certificato secondo lo standard internazionale più recente.{% endif %}</p>
+        </div>
+      </li>
+      <li class="cert-card cert-card--featured">
+        <div class="cert-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="84" height="84">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <text x="50" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.5">ISO/IEC</text>
+            <text x="50" y="60" text-anchor="middle" font-family="Merriweather, serif" font-size="18" font-weight="900" fill="currentColor">27017</text>
+            <text x="50" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7">2015</text>
+          </svg>
+        </div>
+        <div class="cert-body">
+          <span class="cert-label mono">{% if lang == 'en' %}Cloud Security{% else %}Sicurezza Cloud{% endif %}</span>
+          <h3 class="cert-name">ISO/IEC 27017:2015</h3>
+          <p>{% if lang == 'en' %}Cloud-specific security controls aligned with ISO/IEC 27002, covering shared responsibility, tenant isolation and provider/customer obligations.{% else %}Controlli di sicurezza cloud-specifici allineati a ISO/IEC 27002: responsabilità condivisa, isolamento dei tenant, obblighi provider/cliente.{% endif %}</p>
+        </div>
+      </li>
+      <li class="cert-card cert-card--featured">
+        <div class="cert-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="84" height="84">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            <text x="50" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="currentColor" letter-spacing="0.5">ISO</text>
+            <text x="50" y="62" text-anchor="middle" font-family="Merriweather, serif" font-size="20" font-weight="900" fill="currentColor">9001</text>
+            <text x="50" y="78" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="currentColor" opacity="0.7">2015</text>
+          </svg>
+        </div>
+        <div class="cert-body">
+          <span class="cert-label mono">{% if lang == 'en' %}Quality{% else %}Qualità{% endif %}</span>
+          <h3 class="cert-name">ISO 9001:2015</h3>
+          <p>{% if lang == 'en' %}Our Quality Management System is certified for repeatable, measurable, continuously improving service delivery.{% else %}Il nostro Sistema di Gestione della Qualità è certificato per garantire processi ripetibili, misurabili e in continuo miglioramento.{% endif %}</p>
+        </div>
+      </li>
+    </ul>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/trust-center/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Open the Trust Center &rarr;{% else %}Apri il Trust Center &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{# ============== BLOG (teaser) — hidden when no posts in current language ============== #}
+{% set blog = get_section(path="blog/_index.md", lang=lang) %}
+{% if blog.pages | length > 0 %}
+<section class="section section--blog" data-reveal data-marker="field notes">
+  <div class="container container--narrow">
+    <h2 class="section-title">
+      {% if lang == 'en' %}From the blog{% else %}Dal blog{% endif %}
+    </h2>
+    <ul class="blog-teaser-list">
+      {% for post in blog.pages | slice(end=3) %}
+        <li class="blog-teaser-card">
+          <a href="{{ post.permalink }}">
+            <span class="blog-teaser-date mono">{{ post.date | date(format="%Y-%m-%d") }}</span>
+            <h3 class="blog-teaser-title">{{ post.title }}</h3>
+            {% if post.description %}<p class="blog-teaser-desc">{{ post.description }}</p>{% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Read the insights &rarr;{% else %}Leggi gli insight &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+{% endif %}
+
+{# ============== PARTNER (teaser) — al posto della sezione clienti ============== #}
+<section class="section section--partners-teaser" data-reveal data-marker="partners">
+  <div class="container container--narrow">
+    <h2 class="section-title">
+      {% if lang == 'en' %}Our partners.{% else %}I nostri partner.{% endif %}
+    </h2>
+    <p class="section-lead">
+      {% if lang == 'en' %}
+        We build cyber resilience with technology and strategic partners who share our principles. We are part of the
+        <a href="{{ config.extra.argogra }}" target="_blank" rel="noopener">ARGOGRA</a> business network.
+      {% else %}
+        Costruiamo cyber resilienza con partner tecnologici e strategici che condividono i nostri principi. Facciamo parte della rete d'impresa
+        <a href="{{ config.extra.argogra }}" target="_blank" rel="noopener">ARGOGRA</a>.
+      {% endif %}
+    </p>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/partners/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}See the partners &rarr;{% else %}Scopri i partner &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{# ============== LAVORA CON NOI (teaser) ============== #}
+<section class="section section--jobs" data-reveal data-marker="careers">
+  <div class="container container--narrow">
+    <h2 class="section-title">
+      {% if lang == 'en' %}Work with us{% else %}Lavora con noi{% endif %}
+    </h2>
+    <p class="section-lead">
+      {% if lang == 'en' %}
+        We invest in young talent ready to take on real problems with autonomy and responsibility. Vicenza HQ, hybrid work, an environment where curiosity matters more than seniority.
+      {% else %}
+        Investiamo su giovani talenti che vogliono affrontare problemi reali con autonomia e responsabilità. Sede a Vicenza, lavoro ibrido, un ambiente in cui la curiosità conta più dell'anzianità.
+      {% endif %}
+    </p>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/jobs/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Work with us &rarr;{% else %}Lavora con noi &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}
+        Let's build your resilience together.
+      {% else %}
+        Costruiamo insieme la vostra resilienza.
+      {% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Every organisation starts from a different place. Tell us the context, the objectives,
+        the constraints — together we'll work out the path that makes sense for you.
+      {% else %}
+        Ogni organizzazione parte da un punto diverso. Raccontateci il contesto, gli obiettivi
+        e i vincoli — costruiamo insieme il percorso che ha senso per voi.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Contact us &rarr;{% else %}Contattaci &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

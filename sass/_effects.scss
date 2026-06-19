@@ -1,0 +1,75 @@
+// ============================================================
+// Effects — atmospheric overlays + crafted micro-details
+// (grain, dotted grid, scroll progress, chapter numbering)
+// ============================================================
+
+// ---- A1 · Film grain overlay (fissato in viewport) -----------
+// Stesso tile tileable in tutto il sito. mix-blend-mode: overlay
+// schiarisce/scurisce i pixel uniformemente, dando texture stampa.
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/img/grain.svg");
+  background-size: 240px 240px;
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after { opacity: 0.03; }
+}
+
+// ---- A2 · Dotted micro-grid su sezioni narrative -------------
+// Si applica come overlay leggero. Le sezioni che hanno già un
+// proprio gradiente lo conservano: il pattern si somma sopra.
+.section--narrative,
+.section--quote,
+.section--blog,
+.section--jobs,
+.section--clients {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: 0 0;
+}
+
+// Su sezioni con background-color esistente, applica il pattern
+// senza sovrascrivere il colore di fondo.
+.section--principles {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, var(--bg) 0%, #0d0d12 100%);
+  background-size: 26px 26px, auto;
+}
+
+// ---- E3 · Scroll progress hairline ---------------------------
+// CSS-only via animation-timeline (Chromium/Safari17+).
+// Su Firefox stays at scaleX(0) — degrada in silenzio.
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-soft) 50%, var(--accent) 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 110;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(0, 102, 254, 0.35);
+  animation: scroll-progress linear;
+  animation-timeline: scroll(root);
+}
+
+@keyframes scroll-progress {
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #scroll-progress { display: none; }
+}
+

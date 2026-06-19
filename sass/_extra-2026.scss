@@ -1,0 +1,792 @@
+// ============================================================
+// 2026 redesign — nuovi componenti + pass responsive/mobile
+//   Importato per ultimo da main.scss: può sovrascrivere i
+//   partial precedenti dove serve (cascade by source order).
+// ============================================================
+
+// ------------------------------------------------------------
+// HERO statico (sfondo immagine al posto del canvas 3D)
+// ------------------------------------------------------------
+#hero-stage { cursor: default; }
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  // Velo scuro leggero: lascia respirare la luce della volta, scurisce solo
+  // il fondo (per il blend con la sezione sotto e la leggibilità dei bottoni).
+  background-image:
+    linear-gradient(180deg, rgba(10, 10, 12, 0.08) 0%, rgba(10, 10, 12, 0.02) 38%, rgba(10, 10, 12, 0.40) 100%),
+    url("/img/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// Hero statico: vignetta centrale più tenue (l'immagine deve avere importanza)
+#hero .hero-vignette {
+  background:
+    radial-gradient(ellipse 52% 58% at 50% 48%,
+      rgba(5, 7, 18, 0.52) 0%,
+      rgba(5, 7, 18, 0.26) 38%,
+      rgba(5, 7, 18, 0.06) 68%,
+      rgba(5, 7, 18, 0.00) 85%),
+    linear-gradient(180deg,
+      rgba(10, 10, 12, 0.30) 0%,
+      transparent 24%,
+      transparent 72%,
+      rgba(10, 10, 12, 0.78) 100%);
+}
+
+// 3 bottoni hero — impilati a tutta larghezza su mobile
+.hero-cta {
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+    gap: var(--sp-3);
+    .btn { width: 100%; }
+  }
+}
+
+// ------------------------------------------------------------
+// NAV — stato attivo + hamburger fino a 1200px + dropdown inline
+// ------------------------------------------------------------
+// Header: logo a sx · menu centrato · Contatti + lingua a dx
+// Header a tutta larghezza: logo/azioni ai bordi, menu centrato nello spazio in mezzo.
+.header-inner { max-width: none; padding-inline: clamp(1rem, 4vw, 2.5rem); }
+.primary-nav { margin-left: 0; flex: 1 1 auto; justify-content: center; min-width: 0; }
+.nav-list { gap: var(--sp-4); }
+.nav-list > li > a,
+.nav-list .nav-dropdown-link { font-size: 1rem; white-space: nowrap; }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+.header-actions .nav-cta {
+  color: var(--bg);
+  background: var(--accent);
+  padding: var(--sp-2) var(--sp-5);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px rgba(255, 192, 0, 0.45), 0 8px 24px rgba(255, 192, 0, 0.18);
+  transition: background var(--transition), transform var(--transition);
+}
+.header-actions .nav-cta:hover,
+.header-actions .nav-cta:focus-visible { background: var(--accent-soft); color: var(--bg); transform: translateY(-1px); }
+.header-actions .nav-toggle { margin: 0; }
+
+// "Contatti" nel menu: solo nel drawer mobile (sul desktop sta in .header-actions)
+.nav-item-contact { display: none; }
+
+// Soluzioni: il testo è un LINK (click → /soluzioni), la freccia apre la tendina
+// (hover su desktop, tap sulla freccia nel drawer mobile).
+.has-dropdown { display: flex; align-items: center; gap: 2px; }
+.nav-dropdown-caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--text);
+  font: inherit;
+  padding: var(--sp-2) 2px;
+  line-height: 0;
+
+  svg { opacity: 0.7; transition: transform var(--transition); }
+}
+.has-dropdown:hover .nav-dropdown-caret svg,
+.nav-dropdown-caret[aria-expanded="true"] svg { transform: rotate(180deg); opacity: 1; }
+.has-dropdown:hover .nav-dropdown-link:not(.nav-cta)::after { transform: scaleX(1); }
+
+.nav-list > li > a.is-active { color: var(--accent); }
+.nav-list > li > a.is-active:not(.nav-cta)::after {
+  transform: scaleX(1);
+  background: var(--accent);
+}
+.has-dropdown.is-active .nav-dropdown-caret { color: var(--accent); }
+.nav-dropdown a.is-active { color: var(--accent); }
+
+@media (max-width: 1240px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+
+    .nav-toggle-bars {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 22px;
+
+      span { height: 2px; background: var(--text); border-radius: 2px; }
+    }
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sp-1);
+    background: var(--bg-elev);
+    border-bottom: 1px solid var(--border);
+    padding: var(--sp-3) var(--gutter) var(--sp-5);
+    max-height: calc(100svh - 60px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+  .nav-list[data-open="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-list > li { width: 100%; }
+  .nav-list > li > a {
+    display: flex;
+    width: 100%;
+    padding: var(--sp-3) 0;
+    font-size: 1rem;
+  }
+  .nav-list > li + li { border-top: 1px solid var(--border-soft); }
+
+  // Riga Soluzioni nel drawer: link a sinistra (naviga), freccia a destra (apre)
+  .has-dropdown { flex-wrap: wrap; align-items: stretch; }
+  .has-dropdown > .nav-dropdown-link { flex: 1 1 auto; width: auto; }
+  .nav-dropdown-caret {
+    margin-left: auto;
+    align-self: stretch;
+    min-width: 48px;
+    padding: var(--sp-3);
+  }
+
+  // Submenu Soluzioni: inline e full-width sotto la riga (apertura via tap sulla freccia)
+  .has-dropdown .nav-dropdown,
+  .has-dropdown:hover .nav-dropdown {
+    flex-basis: 100%;
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    min-width: 0;
+    padding: 0 0 var(--sp-2) var(--sp-4);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition);
+  }
+  .has-dropdown .nav-dropdown[data-open="true"] { max-height: 360px; }
+
+  .header-cta { display: none; }
+  .nav-item-contact { display: block; }
+  .nav-cta {
+    text-align: center;
+    margin-top: var(--sp-2);
+  }
+  .nav-list > li:last-child > a.nav-cta { border-top: 0; }
+}
+
+// ------------------------------------------------------------
+// BREADCRUMB + "Torna indietro" (incluso su ogni pagina non-home)
+// ------------------------------------------------------------
+.page-subnav {
+  border-top: 0;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--bg);
+}
+
+.page-subnav-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-3) var(--sp-5);
+  padding-block: var(--sp-3);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 14px 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+
+  svg { transition: transform var(--transition); }
+
+  &:hover, &:focus-visible {
+    color: var(--text);
+    border-color: var(--brand-soft);
+    background: rgba(0, 102, 254, 0.06);
+    svg { transform: translateX(-2px); }
+  }
+}
+
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-faint);
+
+  li { display: inline-flex; align-items: center; max-width: 100%; }
+
+  li + li::before {
+    content: "/";
+    margin: 0 var(--sp-3);
+    color: var(--text-faint);
+    opacity: 0.6;
+  }
+
+  a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color var(--transition);
+    &:hover, &:focus-visible { color: var(--accent); }
+  }
+
+  li[aria-current="page"] {
+    color: var(--text);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) { font-size: var(--fs-xs); }
+}
+
+// ------------------------------------------------------------
+// PILLAR LAYOUT — fasce AI/Sviluppo + 3 pillar centrali
+// ------------------------------------------------------------
+.pillars-layout {
+  display: grid;
+  gap: var(--sp-5);
+  margin-top: var(--sp-7);
+}
+
+.sol-pillars-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @media (max-width: 920px) { grid-template-columns: 1fr; }
+}
+
+.pillar-band {
+  --band-accent: var(--accent);
+  --band-tint: rgba(255, 192, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  padding: var(--sp-5) var(--sp-6);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  border-left: 4px solid var(--band-accent);
+  background:
+    linear-gradient(120deg, var(--band-tint) 0%, transparent 60%),
+    var(--bg-elev);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -60px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle at center, var(--band-tint) 0%, transparent 65%);
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &:hover, &:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--band-accent);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28), 0 0 0 1px var(--band-accent);
+    outline: none;
+    .pillar-band-arrow { transform: translateX(4px); }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    padding: var(--sp-5);
+  }
+}
+
+.pillar-band--ai  { --band-accent: #FFC000; --band-tint: rgba(255, 192, 0, 0.12); }
+.pillar-band--dev { --band-accent: #6B5BFF; --band-tint: rgba(107, 91, 255, 0.12); }
+.pillar-band--compliance { --band-accent: #00C9A7; --band-tint: rgba(0, 201, 167, 0.10); }
+.pillar-band--defense    { --band-accent: #4F8EFF; --band-tint: rgba(79, 142, 255, 0.10); }
+.pillar-band--offense    { --band-accent: #FF6B47; --band-tint: rgba(255, 107, 71, 0.10); }
+
+// Indice hub /soluzioni: i 3 pillar in griglia, band verticali (icona · titolo+riga · freccia in basso)
+.pillar-band-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-4);
+
+  @media (max-width: 760px) { grid-template-columns: 1fr; }
+
+  > li { display: flex; }
+
+  .pillar-band {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: var(--sp-3);
+  }
+  .pillar-band-arrow { align-self: flex-end; margin-top: auto; }
+}
+
+.pillar-band-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  color: var(--band-accent);
+  background: color-mix(in oklab, var(--band-accent) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--band-accent) 30%, transparent);
+  position: relative;
+  z-index: 1;
+
+  svg { width: 26px; height: 26px; }
+}
+
+.pillar-band-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pillar-band-label {
+  font-size: var(--fs-xs);
+  color: var(--band-accent);
+  letter-spacing: 0.04em;
+}
+
+.pillar-band-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.pillar-band-text {
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 92ch;
+}
+
+.pillar-band-arrow {
+  flex-shrink: 0;
+  align-self: center;
+  font-size: var(--fs-2xl);
+  color: var(--band-accent);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition);
+
+  @media (max-width: 600px) { align-self: flex-end; margin-top: -10px; }
+}
+
+@supports not (color: color-mix(in oklab, red, blue)) {
+  .pillar-band-icon { background: rgba(255, 255, 255, 0.05); border-color: var(--border); }
+}
+
+// Home: pillar card senza liste servizi → un filo di respiro verticale
+.section--solutions .sol-pillar-link { min-height: 0; }
+
+// ------------------------------------------------------------
+// HOME — Servizi: 3 box (GRC/Defense/Offense) verticali con descrizione
+// lunga + tag; AI e Sviluppo come fasce orizzontali, stesso stile.
+// ------------------------------------------------------------
+.solution-rows--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+
+  @media (max-width: 900px) { grid-template-columns: 1fr; }
+}
+
+// CTA "Approfondisci area di servizio" — usato sull'hub /soluzioni per indirizzare
+// alla pagina del singolo servizio (la home teaser non lo ha).
+.solution-row-cta {
+  display: block;
+  margin-top: var(--sp-3);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--row-accent, var(--accent));
+  transition: transform var(--transition);
+}
+.solution-row:hover .solution-row-cta,
+.solution-row:focus-visible .solution-row-cta { transform: translateX(3px); }
+
+.solution-row--dev {
+  --row-accent: #6B5BFF;
+  --row-tint: rgba(107, 91, 255, 0.08);
+}
+
+// Accent area per la pagina service area "Sviluppo Software Sicuro" (viola, distinto dal blu Defense)
+.sol-area--dev { --sol-area: #6B5BFF; }
+
+// Fascia orizzontale: stesso stile della card, ma a tutta larghezza.
+// Titolo + descrizione raggruppati a sinistra (riga di lettura corta),
+// tag come blocco ordinato a destra, centrato verticalmente.
+.solution-row--wide {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-6);
+  min-height: 0;
+  padding: var(--sp-6) var(--sp-7);
+
+  .solution-row-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 300px);
+    grid-template-areas:
+      "title tags"
+      "desc  tags";
+    column-gap: var(--sp-8);
+    row-gap: var(--sp-2);
+    align-items: start;
+  }
+  .solution-row-title { grid-area: title; }
+  .solution-row-desc  { grid-area: desc; max-width: 66ch; }
+  .solution-row-tags {
+    grid-area: tags;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 0;
+    margin: 0;
+    padding-top: 0;
+    &::before { display: none; }
+  }
+  .solution-row-arrow { align-self: center; margin: 0; }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-5);
+
+    .solution-row-content {
+      grid-template-columns: 1fr;
+      grid-template-areas: "title" "desc" "tags";
+      row-gap: var(--sp-3);
+    }
+    .solution-row-desc { max-width: none; }
+    .solution-row-arrow { align-self: flex-end; }
+  }
+}
+
+// ------------------------------------------------------------
+// TRUST CENTER — certificati scaricabili (placeholder "in arrivo")
+// ------------------------------------------------------------
+.trust-downloads {
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--border-soft);
+}
+
+.trust-downloads-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  font-weight: 900;
+  letter-spacing: -0.018em;
+  color: var(--text);
+  margin: 0 0 var(--sp-2);
+}
+
+.trust-downloads-sub {
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 66ch;
+  margin: 0 0 var(--sp-5);
+}
+
+.trust-download-list {
+  list-style: none;
+  margin: 0 0 var(--sp-5);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-3);
+
+  @media (max-width: 720px) { grid-template-columns: 1fr; }
+}
+
+.trust-download {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+
+  .trust-download-icon { color: var(--accent); }
+
+  &:hover, &:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    outline: none;
+  }
+
+  &.is-disabled {
+    border: 1px dashed var(--border);
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.trust-download-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.trust-download-body { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.trust-download-name { font-weight: 600; color: var(--text); font-size: var(--fs-sm); }
+.trust-download-meta { font-size: var(--fs-xs); color: var(--text-faint); letter-spacing: 0.04em; }
+
+// ------------------------------------------------------------
+// BLOG feed CTA · R&S links
+// ------------------------------------------------------------
+.blog-feed-cta { margin-top: var(--sp-5); }
+.blog-feed-cta .btn svg,
+.rd-links .btn svg { vertical-align: -2px; }
+
+.rd-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-7);
+}
+
+// Placeholder "stay tuned" pagina Ricerca & Sviluppo
+.rd-placeholder {
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+  padding: clamp(var(--sp-7), 6vw, var(--sp-9)) var(--sp-6);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 102, 254, 0.06) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.015);
+
+  .section-title { text-align: center; margin-inline: auto; }
+  .section-lead { margin-inline: auto; }
+  .rd-links { justify-content: center; margin-top: var(--sp-6); }
+}
+.rd-placeholder-eyebrow {
+  display: inline-block;
+  color: var(--brand-soft);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.16em;
+  margin-bottom: var(--sp-4);
+  opacity: 0.85;
+}
+
+.btn.is-disabled,
+.is-disabled > .btn { opacity: 0.55; pointer-events: none; }
+
+// ------------------------------------------------------------
+// FILOSOFIA — 5 principi spiegati
+// ------------------------------------------------------------
+.section--philosophy { background: var(--bg); }
+
+.philosophy-list {
+  list-style: none;
+  margin: var(--sp-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.principle-deep {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition), border-color var(--transition);
+
+  &:hover { transform: translateY(-2px); border-left-color: var(--accent-soft); }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+    padding: var(--sp-5);
+  }
+}
+
+.principle-deep-num {
+  font-family: var(--font-serif);
+  font-size: var(--fs-3xl);
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.principle-deep-name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-2xl);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0 0 var(--sp-2);
+  line-height: 1.1;
+}
+
+.principle-deep-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--brand-soft);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin: 0 0 var(--sp-4);
+}
+
+.principle-deep-what {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  color: var(--text);
+  margin: 0 0 var(--sp-4);
+  max-width: 60ch;
+}
+
+.principle-deep-why {
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin: 0;
+  max-width: 68ch;
+
+  strong { color: var(--text); }
+}
+
+.philosophy-note {
+  margin: var(--sp-7) auto 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-md);
+  color: var(--text-dim);
+  line-height: 1.7;
+  text-align: center;
+  max-width: 64ch;
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+  a:hover, a:focus-visible { color: var(--accent-soft); border-bottom-color: var(--accent-soft); }
+}
+
+// ------------------------------------------------------------
+// Home — intro "Approccio" (sostituisce le 5 card, dettaglio su pagina dedicata)
+// ------------------------------------------------------------
+.section--approach-intro {
+  .section-lead { text-align: center; margin-inline: auto; }
+  .section-cta { text-align: center; }
+}
+
+// ------------------------------------------------------------
+// PARTNER teaser (home) — link inline nella lead
+// ------------------------------------------------------------
+.section--partners-teaser .section-lead a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  transition: color var(--transition), border-color var(--transition);
+
+  &:hover, &:focus-visible { color: var(--accent-soft); border-bottom-color: var(--accent-soft); }
+}
+
+// ------------------------------------------------------------
+// Rifiniture mobile generali
+// ------------------------------------------------------------
+@media (max-width: 600px) {
+  // CTA: bottoni a tutta larghezza, impilati
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    .btn { width: 100%; }
+  }
+  // Container un filo più arioso ai bordi già gestito da --gutter
+  .section-title { max-width: 100%; }
+}
+
+// Evita overflow orizzontale senza rompere position: sticky dell'header.
+// (overflow-x: hidden su <html> trasforma l'html in scroll-container e
+// "stacca" lo sticky; overflow-x: clip non crea scroll-container.)
+body { overflow-x: clip; }

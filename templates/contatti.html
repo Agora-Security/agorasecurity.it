@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--contact-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="contact-hero-title">
+      {% if lang == 'en' %}
+        Let's start a <span class="contact-hero-accent">conversation</span>.
+      {% else %}
+        Iniziamo una <span class="contact-hero-accent">conversazione</span>.
+      {% endif %}
+    </h1>
+    <p class="contact-hero-lead">
+      {% if lang == 'en' %}
+        The best way to reach us is by email. We reply within the day or, at the latest, by the next business day. No forms, no chatbots, no ticketing — a person reads, a person answers.
+      {% else %}
+        Il modo migliore per raggiungerci è una mail. Rispondiamo in giornata o, al più tardi, il giorno lavorativo successivo. Niente form, niente chatbot, niente ticket — leggono persone, rispondono persone.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CHANNELS GRID ============== #}
+<section class="section section--contact-channels" data-reveal data-marker="channels">
+  <div class="container container--narrow">
+    <h2 class="contact-section-title">
+      {% if lang == 'en' %}Pick the right channel.{% else %}Scegli il canale giusto.{% endif %}
+    </h2>
+
+    <ul class="contact-channels">
+
+      <li class="contact-channel" data-stagger>
+        <h3 class="contact-channel-name">{% if lang == 'en' %}General enquiries{% else %}Informazioni generali{% endif %}</h3>
+        <p class="contact-channel-desc">
+          {% if lang == 'en' %}Project requests, proposals, quotes, partnerships, anything else.{% else %}Richieste progetto, proposte, preventivi, partnership, qualsiasi altra cosa.{% endif %}
+        </p>
+        <a class="contact-channel-link mono" href="mailto:info@agorasecurity.it">info@agorasecurity.it &rarr;</a>
+      </li>
+
+      <li class="contact-channel" data-stagger>
+        <h3 class="contact-channel-name">{% if lang == 'en' %}Privacy &amp; data subject rights{% else %}Privacy e diritti dell'interessato{% endif %}</h3>
+        <p class="contact-channel-desc">
+          {% if lang == 'en' %}Requests under arts. 15&ndash;22 GDPR (access, rectification, erasure, portability) and any data-protection question.{% else %}Richieste ex artt. 15&ndash;22 GDPR (accesso, rettifica, cancellazione, portabilità) e qualunque tema di data protection.{% endif %}
+        </p>
+        <a class="contact-channel-link mono" href="mailto:privacy@agorasecurity.it">privacy@agorasecurity.it &rarr;</a>
+      </li>
+
+      <li class="contact-channel contact-channel--urgent" data-stagger>
+        <h3 class="contact-channel-name">{% if lang == 'en' %}Active incident{% else %}Incidente in corso{% endif %}</h3>
+        <p class="contact-channel-desc">
+          {% if lang == 'en' %}Ongoing breach, ransomware, suspected compromise.{% else %}Breach in corso, ransomware, sospetta compromissione.{% endif %}
+        </p>
+        <a class="contact-channel-link mono" href="mailto:dfir@agorasecurity.it?subject={% if lang == 'en' %}URGENT%20%E2%80%94%20IR{% else %}URGENTE%20%E2%80%94%20IR{% endif %}">dfir@agorasecurity.it &rarr;</a>
+      </li>
+
+      <li class="contact-channel" data-stagger>
+        <h3 class="contact-channel-name">{% if lang == 'en' %}Join the team{% else %}Lavora con noi{% endif %}</h3>
+        <p class="contact-channel-desc">
+          {% if lang == 'en' %}Open application or specific role. Two lines on what you've done and what you'd like to do next are enough.{% else %}Candidatura spontanea o per posizione aperta. Bastano due righe su cosa hai fatto e cosa vorresti fare adesso.{% endif %}
+        </p>
+        <a class="contact-channel-link mono" href="mailto:info@agorasecurity.it?subject={% if lang == 'en' %}Application{% else %}Candidatura{% endif %}">info@agorasecurity.it &rarr;</a>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+{# ============== OFFICE + COMPANY INFO ============== #}
+<section class="section section--contact-meta" data-reveal data-marker="office">
+  <div class="container container--narrow">
+    <div class="contact-meta-grid">
+
+      <div class="contact-meta-block" data-stagger>
+        <h2 class="contact-meta-title">
+          {% if lang == 'en' %}Registered &amp; operating office{% else %}Sede legale e operativa{% endif %}
+        </h2>
+        <address class="contact-meta-address">
+          <strong>Agorà Security S.r.l.</strong><br>
+          Viale Sant'Agostino 136<br>
+          36100 Vicenza (VI), {% if lang == 'en' %}Italy{% else %}Italia{% endif %}
+        </address>
+        <p class="contact-meta-detail mono">
+          {% if lang == 'en' %}Visits by appointment only.{% else %}Visite su appuntamento.{% endif %}
+        </p>
+      </div>
+
+      <div class="contact-meta-block" data-stagger>
+        <h2 class="contact-meta-title">
+          {% if lang == 'en' %}Company information{% else %}Dati societari{% endif %}
+        </h2>
+        <dl class="contact-meta-dl mono">
+          <dt>P.IVA / C.F.</dt><dd>04450760246</dd>
+          <dt>SDI</dt><dd>M5UXCR1</dd>
+          <dt>{% if lang == 'en' %}Founded{% else %}Anno costituzione{% endif %}</dt><dd>2023</dd>
+        </dl>
+      </div>
+
+      <div class="contact-meta-block" data-stagger>
+        <h2 class="contact-meta-title">
+          {% if lang == 'en' %}Find us online{% else %}Trovaci online{% endif %}
+        </h2>
+        <ul class="contact-meta-socials">
+          {% if config.extra.linkedin %}
+          <li>
+            <a href="{{ config.extra.linkedin }}" target="_blank" rel="me">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if config.extra.github %}
+          <li>
+            <a href="{{ config.extra.github }}" target="_blank" rel="me">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.16c-3.34.72-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+        <p class="contact-meta-detail">
+          {% if lang == 'en' %}No support tickets, no chatbots, no embedded social widgets. Just email and direct links.{% else %}Niente ticket, niente chatbot, niente widget social embedded. Solo email e link diretti.{% endif %}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

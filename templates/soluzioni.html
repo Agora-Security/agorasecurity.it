@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        Many competencies, one integrated vision.
+      {% else %}
+        Tante competenze, una visione integrata.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        A single partner for all of cybersecurity. Pick the area you're interested in to go deeper.
+      {% else %}
+        Un partner unico per tutta la cybersecurity. Scegli l'area che ti interessa per approfondire.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== PILLAR — AI band · 3 pillar · Sviluppo band ============== #}
+<section class="section section--sol-pillars" data-reveal data-marker="pillars">
+  <div class="container">
+    <div class="pillars-layout">
+
+      {# --- AI Adoption (fascia) --- #}
+      <a class="pillar-band pillar-band--ai" href="{{ get_url(path='@/soluzioni/ai-security/_index.md', lang=lang) }}">
+        <span class="pillar-band-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="6" width="12" height="12" rx="2"/>
+            <path d="M9 3 V6 M15 3 V6 M9 18 V21 M15 18 V21 M3 9 H6 M3 15 H6 M18 9 H21 M18 15 H21"/>
+            <circle cx="12" cy="12" r="2.2"/>
+          </svg>
+        </span>
+        <span class="pillar-band-main">
+          <span class="pillar-band-title">AI Adoption</span>
+          <span class="pillar-band-text">{% if lang == 'en' %}We implement tailored AI solutions: chatbots, agents, sovereign architectures.{% else %}Implementiamo soluzioni AI su misura: chatbot, agenti, architetture sovrane.{% endif %}</span>
+        </span>
+        <span class="pillar-band-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      {# --- 3 pillar (indice: icona + titolo + 1 riga) --- #}
+      <ul class="pillar-band-grid">
+        <li>
+          <a class="pillar-band pillar-band--compliance" href="{{ get_url(path='@/soluzioni/compliance/_index.md', lang=lang) }}">
+            <span class="pillar-band-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21 H21"/><path d="M4 21 V10 L12 4 L20 10 V21"/><path d="M8 21 V14 M12 21 V14 M16 21 V14"/><path d="M3 10 H21"/>
+              </svg>
+            </span>
+            <span class="pillar-band-main">
+              <span class="pillar-band-title">Governance, Risk &amp; Compliance</span>
+              <span class="pillar-band-text">{% if lang == 'en' %}We make you compliant with European regulations.{% else %}Vi rendiamo conformi alle normative europee.{% endif %}</span>
+            </span>
+            <span class="pillar-band-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="pillar-band pillar-band--defense" href="{{ get_url(path='@/soluzioni/cyber-defense/_index.md', lang=lang) }}">
+            <span class="pillar-band-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 L4 5 v6 c0 5 3.5 9 8 11 c4.5-2 8-6 8-11 V5 z"/><path d="M9 12 l2 2 l4-4"/>
+              </svg>
+            </span>
+            <span class="pillar-band-main">
+              <span class="pillar-band-title">Cyber Defense</span>
+              <span class="pillar-band-text">{% if lang == 'en' %}We make you secure, before the attack.{% else %}Vi rendiamo sicuri, prima dell'attacco.{% endif %}</span>
+            </span>
+            <span class="pillar-band-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="pillar-band pillar-band--offense" href="{{ get_url(path='@/soluzioni/cyber-offense/_index.md', lang=lang) }}">
+            <span class="pillar-band-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 1 v6 M12 17 v6 M1 12 h6 M17 12 h6"/>
+              </svg>
+            </span>
+            <span class="pillar-band-main">
+              <span class="pillar-band-title">Cyber Offense</span>
+              <span class="pillar-band-text">{% if lang == 'en' %}We put you to the test, thinking like an attacker.{% else %}Vi mettiamo alla prova pensando come un attaccante.{% endif %}</span>
+            </span>
+            <span class="pillar-band-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+
+      {# --- Sviluppo Software (fascia) --- #}
+      <a class="pillar-band pillar-band--dev" href="{{ get_url(path='@/soluzioni/sviluppo-software/_index.md', lang=lang) }}">
+        <span class="pillar-band-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 8 L4 12 L8 16 M16 8 L20 12 L16 16"/><path d="M13 5 L11 19"/>
+          </svg>
+        </span>
+        <span class="pillar-band-main">
+          <span class="pillar-band-title">{% if lang == 'en' %}Secure Software Engineering{% else %}Sviluppo Software Sicuro{% endif %}</span>
+          <span class="pillar-band-text">{% if lang == 'en' %}We build secure software and our own proprietary products.{% else %}Costruiamo software sicuro e i nostri prodotti proprietari.{% endif %}</span>
+        </span>
+        <span class="pillar-band-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+    </div>
+
+    <p class="sol-standards-note">
+      {% if lang == 'en' %}
+        Every engagement is anchored to international cybersecurity standards and the European regulatory framework. Scope, deliverables and depth are tailored to each project.
+      {% else %}
+        Ogni progetto è ancorato agli standard internazionali di cybersecurity e al quadro regolatorio europeo. Scope, deliverable e profondità si calibrano sul singolo mandato.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Tell us your starting point.{% else %}Raccontaci il punto di partenza.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        One pillar or all three, ad-hoc project or yearly programme — we shape scope, depth and rhythm around the engagement that makes sense for you.
+      {% else %}
+        Un pillar o tutti e tre, progetto ad-hoc o programma annuale — modelliamo scope, profondità e ritmo sul mandato che ha senso per voi.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

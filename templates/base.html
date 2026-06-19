@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0c">
+
+{# ---- Title / SEO base ---- #}
+{% set page_title = page.title | default(value=section.title | default(value=config.title)) %}
+{% set page_desc = page.description | default(value=section.description | default(value=config.description)) %}
+{% set is_home = current_path | default(value="/") == "/" or current_path | default(value="/") == "/en/" %}
+
+<title>{% if is_home %}{{ page_title }}{% else %}{{ page_title }} — {{ config.title }}{% endif %}</title>
+<meta name="description" content="{{ page_desc }}">
+<meta name="robots" content="index,follow">
+
+{# ---- Canonical + hreflang ---- #}
+<link rel="canonical" href="{{ current_url | default(value=config.base_url) | safe }}">
+{% if page.translations or section.translations %}
+  {% set translations = page.translations | default(value=section.translations) %}
+  {% for t in translations %}
+    <link rel="alternate" hreflang="{{ t.lang }}" href="{{ t.permalink | safe }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ current_url | default(value=config.base_url) | safe }}">
+  <link rel="alternate" hreflang="x-default" href="{{ current_url | default(value=config.base_url) | safe }}">
+{% endif %}
+
+{# ---- Open Graph / Twitter ---- #}
+<meta property="og:site_name" content="{{ config.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url" content="{{ current_url | default(value=config.base_url) | safe }}">
+<meta property="og:type" content="{% if is_home %}website{% else %}article{% endif %}">
+<meta property="og:image" content="{{ get_url(path='img/og.png') }}">
+<meta property="og:locale" content="{% if lang == 'en' %}en_US{% else %}it_IT{% endif %}">
+<meta name="twitter:card" content="summary_large_image">
+
+{# ---- Favicon ---- #}
+<link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
+<link rel="alternate icon" href="{{ get_url(path='favicon.ico') }}">
+<link rel="apple-touch-icon" href="{{ get_url(path='img/apple-touch-icon.png') }}">
+
+{# ---- Font preload (self-hosted woff2) ---- #}
+<link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/inter-var.woff2') }}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/merriweather-700.woff2') }}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/jetbrains-mono-400.woff2') }}" crossorigin>
+
+{# ---- CSS ---- #}
+<link rel="stylesheet" href="{{ get_url(path='main.css') }}">
+
+{# ---- Atom feed ---- #}
+{% if lang == 'en' %}
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} — Insights" href="{{ get_url(path='en/blog/atom.xml') }}">
+{% else %}
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} — Insights" href="{{ get_url(path='blog/atom.xml') }}">
+{% endif %}
+
+{# ---- View Transitions (progressive enhancement) ---- #}
+<meta name="view-transition" content="same-origin">
+
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+{# E3 · Scroll progress hairline (CSS-only via animation-timeline) #}
+<div id="scroll-progress" aria-hidden="true"></div>
+
+{% include "partials/header.html" %}
+
+<main id="main" tabindex="-1">
+  {% if not is_home %}{% include "partials/breadcrumb.html" %}{% endif %}
+  {% block content %}{% endblock %}
+</main>
+
+{% include "partials/footer.html" %}
+
+{# ---- JS minimal (no framework, defer for non-blocking parse) ---- #}
+<script type="module" src="{{ get_url(path='js/nav.js') }}" defer></script>
+<script type="module" src="{{ get_url(path='js/reveal.js') }}" defer></script>
+
+{# ---- "Torna indietro": history.back() quando c'è cronologia interna, altrimenti il fallback href ---- #}
+<script>
+(function () {
+  document.querySelectorAll("[data-back]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      try {
+        var sameOrigin = document.referrer && new URL(document.referrer).origin === location.origin;
+        if (sameOrigin && history.length > 1) { e.preventDefault(); history.back(); }
+      } catch (_) { /* fallback al link */ }
+    });
+  });
+})();
+</script>
+
+{% block extra_js %}{% endblock %}
+
+{# ---- E2 · Console signature (wizard signal) ---- #}
+<script>
+(function () {
+  var shield = [
+    "    ╱▔▔▔▔▔╲    ",
+    "   ╱   ▲   ╲   ",
+    "  │   ▲▲▲   │  ",
+    "  │  ▲▲▲▲▲  │  ",
+    "   ╲       ╱   ",
+    "    ╲_____╱    "
+  ].join("\n");
+  console.log("%c" + shield, "color:#FFC000;font-family:monospace;font-size:12px;line-height:1.1");
+  console.log(
+    "%cAgorà Security%c · Sovereign · AI-Native · Cyber Resilience\n%c// memory-safe by design — built in Rust, on Linux, with open source\n%c// hello, fellow wizard. we're hiring → %cjobs@agorasecurity.it",
+    "color:#0066FE;font-weight:700;font-size:13px",
+    "color:#a3a3ad;font-weight:400",
+    "color:#6b6b75;font-family:monospace;font-size:11px",
+    "color:#6b6b75;font-family:monospace;font-size:11px",
+    "color:#FFC000;font-family:monospace;font-size:11px;font-weight:600"
+  );
+})();
+</script>
+</body>
+</html>

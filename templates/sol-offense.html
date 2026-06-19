@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sol-area--offense">
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        Test your defences by thinking like an attacker.
+      {% else %}
+        Verificare le difese pensando come un attaccante.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        Vulnerability assessment, manual penetration tests, end-to-end red teaming, security testing of applications, cloud, AI. We show what works and what doesn't — before someone else finds out.
+      {% else %}
+        Vulnerability assessment, penetration test manuali, red team end-to-end, security testing di applicazioni, cloud, AI. Mostriamo cosa funziona e cosa no, prima che lo scopra qualcun altro.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== SUB-CATEGORIES — 8 cards ============== #}
+<section class="section section--sol-categories" data-reveal data-marker="services">
+  <div class="container">
+    <ul class="sol-grid">
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M16 16 L21 21"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Vulnerability Assessment{% else %}Vulnerability Assessment{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Internal and external scans, dedup, prioritisation, remediation plan.{% else %}Scan interna ed esterna, deduplicazione, prioritizzazione, remediation plan.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-115</span><span class="fw-chip">OWASP</span><span class="fw-chip">CVSS+EPSS+KEV</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 6 a4 4 0 1 0 -3 6 L4 19 l2 2 l7-7 a4 4 0 0 0 6-3"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Penetration Testing{% else %}Penetration Testing{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Manual testing — black, grey, white box — with reproducible PoCs.{% else %}Test manuali — black, grey, white box — con PoC riproducibili.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">OSSTMM</span><span class="fw-chip">PTES</span><span class="fw-chip">NIST SP 800-115</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6 L2 12 L8 18 M16 6 L22 12 L16 18"/>
+            <path d="M13 4 L11 20"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Webapp &amp; API Security{% else %}Webapp &amp; API Security{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Application security testing on web and APIs, including business logic flaws.{% else %}Application security testing su web e API, business logic flaws inclusi.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">OWASP ASVS 4.0</span><span class="fw-chip">OWASP Top 10</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 18 a4 4 0 0 1 0-8 a6 6 0 0 1 11-2 a4 4 0 0 1 0 8 H7"/>
+            <rect x="10" y="14" width="4" height="5"/>
+            <path d="M10.5 14 v-1.5 a1.5 1.5 0 0 1 3 0 V14"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Cloud Security Posture{% else %}Cloud Security Posture{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}AWS/Azure/GCP review: IAM, network, data protection, logging.{% else %}Review AWS/Azure/GCP: IAM, network, data protection, logging.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">CIS Cloud</span><span class="fw-chip">CSA CCM</span><span class="fw-chip">ISO 27017</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 21 V4 c4-2 8 2 12 0 v10 c-4 2-8-2-12 0"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Red Team &amp; Adversary Simulation{% else %}Red Team &amp; Adversary Simulation{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}End-to-end attack simulation with agreed objectives, detection &amp; response testing.{% else %}Simulazione di attacco end-to-end con obiettivi concordati, test di rilevazione e risposta.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">MITRE ATT&amp;CK</span><span class="fw-chip">TIBER-EU</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="8" r="4"/>
+            <path d="M2 21 a7 7 0 0 1 14 0"/>
+            <path d="M17 11 L23 17 M23 11 L17 17"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Phishing &amp; Awareness Campaign{% else %}Phishing &amp; Awareness Campaign{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Realistic phishing campaigns with AiTM landing pages and targeted training.{% else %}Campagne phishing realistiche con landing AiTM e training mirato.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-50</span><span class="fw-chip">MITRE ATT&amp;CK</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="10" width="18" height="9" rx="1"/>
+            <path d="M8 10 V7 a4 4 0 0 1 8 0 v3"/>
+            <circle cx="9" cy="14.5" r="0.6" fill="currentColor"/>
+            <circle cx="12" cy="14.5" r="0.6" fill="currentColor"/>
+            <circle cx="15" cy="14.5" r="0.6" fill="currentColor"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Active Directory &amp; Password Audit{% else %}Active Directory &amp; Password Audit{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Offline AD/LDAP extraction and cracking, entropy analysis, policy recommendations.{% else %}Estrazione e cracking offline AD/LDAP, analisi entropy, raccomandazioni di policy.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-63B</span><span class="fw-chip">ISO 27033</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 3 L4 14 H11 L11 21 L20 10 H13 z"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}AI / LLM Red Teaming{% else %}AI / LLM Red Teaming{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Prompt injection, jailbreak, model extraction, data exfiltration on production LLMs.{% else %}Prompt injection, jailbreak, model extraction, data exfiltration su LLM in produzione.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">OWASP LLM Top 10</span><span class="fw-chip">MITRE ATLAS</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+    </ul>
+
+    <p class="sol-standards-note">
+      {% if lang == 'en' %}
+        Every test is conducted manually by senior staff and anchored to international offensive security standards. Scope, rules of engagement and depth are tailored to each project.
+      {% else %}
+        Ogni test è condotto manualmente da personale senior, ancorato agli standard internazionali di offensive security. Scope, regole di ingaggio e profondità si calibrano sul singolo mandato.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Pressure-test your defences.{% else %}Mettiamo alla prova le difese.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Need a single asset tested or an end-to-end red team engagement? Tell us the scope and the objective — we'll write back.
+      {% else %}
+        Vi serve un singolo asset testato o un'operazione red team end-to-end? Raccontateci scope e obiettivo, vi rispondiamo.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+</div>
+
+{% endblock %}

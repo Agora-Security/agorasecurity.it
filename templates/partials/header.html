@@ -1,0 +1,76 @@
+<header class="site-header" data-header>
+  <div class="header-inner">
+    {% set cp = current_path | default(value="/") %}
+    {% set is_sol = "/soluzioni" in cp %}
+
+    <a class="brand" href="{{ get_url(path='/', lang=lang) }}" aria-label="Agorà Security — home">
+      <img class="brand-logo" src="{{ get_url(path='img/agora-logo-dark-tight.png') }}" alt="Agorà Security" decoding="async">
+    </a>
+
+    <nav class="primary-nav" aria-label="{% if lang == 'en' %}Primary{% else %}Principale{% endif %}">
+      <ul id="primary-menu" class="nav-list" data-nav-menu>
+        <li><a href="{{ get_url(path='/', lang=lang) }}"{% if cp == "/" or cp == "/en/" %} class="is-active" aria-current="page"{% endif %}>Home</a></li>
+        <li class="has-dropdown{% if is_sol %} is-active{% endif %}" data-dropdown>
+          <a class="nav-dropdown-link{% if is_sol %} is-active{% endif %}" href="{{ get_url(path='@/soluzioni/_index.md', lang=lang) }}"{% if is_sol %} aria-current="page"{% endif %}>{% if lang == 'en' %}Solutions{% else %}Soluzioni{% endif %}</a>
+          <button class="nav-dropdown-caret" aria-expanded="false" aria-haspopup="true" aria-label="{% if lang == 'en' %}Open Solutions submenu{% else %}Apri sottomenu Soluzioni{% endif %}" data-dropdown-trigger>
+            <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="nav-dropdown" data-dropdown-menu>
+            <li><a href="{{ get_url(path='@/soluzioni/compliance/_index.md', lang=lang) }}"{% if "/soluzioni/compliance" in cp %} class="is-active" aria-current="page"{% endif %}>Governance, Risk &amp; Compliance</a></li>
+            <li><a href="{{ get_url(path='@/soluzioni/cyber-defense/_index.md', lang=lang) }}"{% if "/soluzioni/cyber-defense" in cp %} class="is-active" aria-current="page"{% endif %}>Cyber Defense</a></li>
+            <li><a href="{{ get_url(path='@/soluzioni/cyber-offense/_index.md', lang=lang) }}"{% if "/soluzioni/cyber-offense" in cp %} class="is-active" aria-current="page"{% endif %}>Cyber Offense</a></li>
+            <li><a href="{{ get_url(path='@/soluzioni/ai-security/_index.md', lang=lang) }}"{% if "/soluzioni/ai-security" in cp %} class="is-active" aria-current="page"{% endif %}>AI Adoption</a></li>
+            <li><a href="{{ get_url(path='@/soluzioni/sviluppo-software/_index.md', lang=lang) }}"{% if "/soluzioni/sviluppo-software" in cp %} class="is-active" aria-current="page"{% endif %}>{% if lang == 'en' %}Secure Software Engineering{% else %}Sviluppo Software Sicuro{% endif %}</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ get_url(path='@/chi-siamo/_index.md', lang=lang) }}"{% if "/chi-siamo" in cp %} class="is-active" aria-current="page"{% endif %}>{% if lang == 'en' %}About{% else %}Chi siamo{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/approccio/_index.md', lang=lang) }}"{% if "/approccio" in cp %} class="is-active" aria-current="page"{% endif %}>{% if lang == 'en' %}Approach{% else %}Approccio{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/partners/_index.md', lang=lang) }}"{% if "/partners" in cp %} class="is-active" aria-current="page"{% endif %}>{% if lang == 'en' %}Partners{% else %}Partner{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/trust-center/_index.md', lang=lang) }}"{% if "/trust-center" in cp %} class="is-active" aria-current="page"{% endif %}>Trust Center</a></li>
+        <li><a href="{{ get_url(path='@/ricerca-sviluppo/_index.md', lang=lang) }}"{% if "/ricerca-sviluppo" in cp %} class="is-active" aria-current="page"{% endif %}>{% if lang == 'en' %}R&amp;D{% else %}Ricerca &amp; Sviluppo{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/jobs/_index.md', lang=lang) }}"{% if "/jobs" in cp %} class="is-active" aria-current="page"{% endif %}>{% if lang == 'en' %}Careers{% else %}Lavora con noi{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}"{% if "/blog" in cp %} class="is-active" aria-current="page"{% endif %}>Blog</a></li>
+        <li class="nav-item-contact"><a class="nav-cta" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">{% if lang == 'en' %}Contact{% else %}Contatti{% endif %}</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="nav-cta header-cta" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">{% if lang == 'en' %}Contact{% else %}Contatti{% endif %}</a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" data-nav-toggle>
+        <span class="sr-only">{% if lang == 'en' %}Menu{% else %}Menù{% endif %}</span>
+        <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+
+      <div class="lang-switch" data-dropdown>
+        <button class="lang-switch-trigger" data-dropdown-trigger aria-expanded="false" aria-haspopup="true" aria-label="{% if lang == 'en' %}Change language{% else %}Cambia lingua{% endif %}">
+          {% if lang == 'en' %}
+            <img class="flag" src="{{ get_url(path='img/flag-gb.svg') }}" alt="" width="20" height="12" decoding="async">
+            <span>EN</span>
+          {% else %}
+            <img class="flag" src="{{ get_url(path='img/flag-it.svg') }}" alt="" width="20" height="12" decoding="async">
+            <span>IT</span>
+          {% endif %}
+          <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="lang-switch-menu" data-dropdown-menu>
+          {% if lang == 'en' %}
+            <li>
+              <a href="/" hreflang="it" lang="it" aria-label="Italiano">
+                <img class="flag" src="{{ get_url(path='img/flag-it.svg') }}" alt="" width="20" height="12" decoding="async">
+                <span>IT</span>
+              </a>
+            </li>
+          {% else %}
+            <li>
+              <a href="/en/" hreflang="en" lang="en" aria-label="English">
+                <img class="flag" src="{{ get_url(path='img/flag-gb.svg') }}" alt="" width="20" height="12" decoding="async">
+                <span>EN</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

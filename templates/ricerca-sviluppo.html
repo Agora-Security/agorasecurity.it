@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sol-area--ai">
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        We don't just use security tools. We build them.
+      {% else %}
+        Non usiamo soltanto strumenti di sicurezza. Li costruiamo.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        Research and engineering are not a side project — they're how we keep our edge. Proprietary products, sovereign AI, open-source contributions and tooling in Rust, built on the same principles we apply to client work.
+      {% else %}
+        Ricerca e sviluppo non sono un progetto a margine — sono il modo in cui manteniamo il vantaggio. Prodotti proprietari, AI sovrana, contributi open source e strumenti in Rust, costruiti sugli stessi principi che applichiamo al lavoro con i clienti.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== PROGETTI — placeholder "stay tuned" ============== #}
+<section class="section section--sol-categories" data-reveal data-marker="projects">
+  <div class="container container--narrow">
+    <div class="rd-placeholder">
+      <span class="rd-placeholder-eyebrow mono">// stay tuned</span>
+      <h2 class="section-title">{% if lang == 'en' %}Projects coming soon.{% else %}Progetti in arrivo.{% endif %}</h2>
+      <p class="section-lead">
+        {% if lang == 'en' %}
+          We're getting our projects ready — proprietary products, open-source contributions and research. They'll land here soon, each with links to its GitHub repository and the related blog posts. In the meantime, follow along.
+        {% else %}
+          Stiamo preparando i nostri progetti — prodotti proprietari, contributi open source e ricerca. Arriveranno qui a breve, ognuno con i link al repository GitHub e agli articoli del blog collegati. Nel frattempo, seguici.
+        {% endif %}
+      </p>
+      <p class="rd-links">
+        <a class="btn btn-primary btn-sm" href="{{ config.extra.github }}" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.16c-3.34.72-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          {% if lang == 'en' %}Explore our GitHub &rarr;{% else %}Esplora il nostro GitHub &rarr;{% endif %}
+        </a>
+        <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">
+          {% if lang == 'en' %}Read the blog &rarr;{% else %}Leggi il blog &rarr;{% endif %}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Build something with us.{% else %}Costruiamo qualcosa insieme.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        A research collaboration, a sovereign-AI proof of concept, a secure product to build from scratch — if it's hard and it matters, we're interested.
+      {% else %}
+        Una collaborazione di ricerca, un proof of concept di AI sovrana, un prodotto sicuro da costruire da zero — se è difficile e conta, ci interessa.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+</div>
+
+{% endblock %}

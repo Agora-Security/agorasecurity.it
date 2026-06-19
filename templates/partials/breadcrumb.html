@@ -1,0 +1,40 @@
+{# ============================================================
+   Breadcrumb + "Torna indietro" — incluso da base.html su ogni
+   pagina non-home. Il percorso è derivato dagli ancestors della
+   pagina/sezione corrente; il back-link punta al genitore (o alla
+   home) ed è potenziato lato JS con history.back() quando esiste
+   cronologia interna (vedi base.html).
+   ============================================================ #}
+{% set_global cur = false %}
+{% if page is defined %}{% set_global cur = page %}
+{% elif section is defined %}{% set_global cur = section %}{% endif %}
+
+{% set_global back_url = get_url(path='/', lang=lang) %}
+{% if cur and cur.ancestors and cur.ancestors | length > 1 %}
+  {% set parent = get_section(path=cur.ancestors | last, metadata_only=true) %}
+  {% set_global back_url = parent.permalink %}
+{% endif %}
+
+<nav class="page-subnav" aria-label="{% if lang == 'en' %}Breadcrumb{% else %}Percorso{% endif %}">
+  <div class="container page-subnav-inner">
+    <a class="back-link" href="{{ back_url | safe }}" data-back rel="prev">
+      <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>{% if lang == 'en' %}Back{% else %}Torna indietro{% endif %}</span>
+    </a>
+
+    {% if cur %}
+    <ol class="breadcrumb">
+      <li><a href="{{ get_url(path='/', lang=lang) }}">Home</a></li>
+      {% if cur.ancestors %}
+        {% for anc in cur.ancestors %}
+          {% if anc != "_index.md" and anc != "_index.en.md" %}
+            {% set asec = get_section(path=anc, metadata_only=true) %}
+            <li><a href="{{ asec.permalink | safe }}">{{ asec.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      <li aria-current="page">{{ cur.title }}</li>
+    </ol>
+    {% endif %}
+  </div>
+</nav>

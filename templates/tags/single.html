@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container container--narrow" style="padding-block: var(--sp-7) var(--sp-9);">
+  <h1 class="prose-title">#{{ term.name }}</h1>
+  <p class="prose-lead">
+    {{ term.pages | length }} {% if lang == 'en' %}post tagged{% else %}articol{% if term.pages | length == 1 %}o{% else %}i{% endif %} con questo tag{% endif %}.
+  </p>
+
+  <ul class="post-list">
+    {% for post in term.pages %}
+      <li class="post-card">
+        <p class="post-meta mono">
+          <time datetime="{{ post.date }}">{{ post.date | date(format="%Y-%m-%d") }}</time>
+        </p>
+        <h2 class="post-title"><a href="{{ post.permalink | safe }}">{{ post.title }}</a></h2>
+        {% if post.description %}<p class="post-excerpt">{{ post.description }}</p>{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="mono" style="margin-top: var(--sp-6);">
+    ← <a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">{% if lang == 'en' %}back to insights{% else %}torna agli insights{% endif %}</a>
+  </p>
+</section>
+{% endblock %}

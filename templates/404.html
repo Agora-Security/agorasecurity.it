@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="error-404 container container--narrow">
+  <h1 class="prose-title">{% if lang == 'en' %}Compromise simulated.{% else %}Compromissione simulata.{% endif %}</h1>
+  <p class="prose-lead">
+    {% if lang == 'en' %}
+      The page you requested does not exist. Either we removed it, or you typed it wrong.
+      Either way: this is a controlled environment, you're safe.
+    {% else %}
+      La pagina richiesta non esiste. O l'abbiamo rimossa, o l'URL è sbagliato.
+      In ogni caso: ambiente controllato, nessun pericolo.
+    {% endif %}
+  </p>
+  {% set log_ts = now() | date(format="%b %d %H:%M:%S") %}
+  <pre class="terminal-log mono" data-typing aria-hidden="true"><code data-typing-line data-delay="0">{{ log_ts }} agora-edge kernel: [page.lookup] segment 'requested-path' not mapped to physical content</code>
+<code data-typing-line data-delay="400">{{ log_ts }} agora-edge nginx[1337]: <span class="log-status">404</span> GET &lt;redacted&gt; ua=&quot;&lt;truncated&gt;&quot; — no panic, this is intentional containment</code>
+<code data-typing-line data-delay="750">{{ log_ts }} agora-edge agosec-watch: incident=none confidence=1.00 <span class="log-action">action=redirect_safe</span> note={% if lang == 'en' %}&quot;if you were probing, we have noticed&quot;{% else %}&quot;se stavi sondando, lo abbiamo notato&quot;{% endif %}</code></pre>
+  <div class="terminal-progress" data-progress aria-hidden="true"><span></span></div>
+  <p class="cta-mono mono">→ <a href="/">{% if lang == 'en' %}back to safety{% else %}torna in sicurezza{% endif %}</a></p>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ get_url(path='js/404-typing.js') }}" defer></script>
+{% endblock %}

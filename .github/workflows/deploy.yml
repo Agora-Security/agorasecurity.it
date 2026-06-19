@@ -1,0 +1,55 @@
+name: Build and deploy site
+
+# Trigger: solo push su main + manuale.
+# Sicurezza: nessun input non controllato (issue/PR title, commit message)
+# viene interpolato in run:. Tutti gli usi di ${{ }} sono per:
+#   - secrets / vars trusted dal repo settings
+#   - output di altre azioni (es. deployment.outputs.page_url) che non
+#     contengono shell injection vector.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Zola
+        uses: shalzz/zola-deploy-action@v0.20.0
+        env:
+          BUILD_DIR: .
+          BUILD_ONLY: true
+          BUILD_FLAGS: --minify
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

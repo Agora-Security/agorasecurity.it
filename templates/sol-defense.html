@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sol-area--defense">
+
+{# ============== HERO ============== #}
+<section class="section section--sol-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="sol-hero-title">
+      {% if lang == 'en' %}
+        Defend before, during and after the attack.
+      {% else %}
+        Difendere prima, durante e dopo l'attacco.
+      {% endif %}
+    </h1>
+    <p class="sol-hero-lead">
+      {% if lang == 'en' %}
+        Incident response, proactive threat hunting, sector intelligence, crisis exercises. We build defensive capabilities that don't get switched on in the middle of a crisis.
+      {% else %}
+        Risposta agli incidenti, threat hunting proattivo, intelligence settoriale, esercitazioni di crisi. Costruiamo capacità di difesa che non si attivano nel momento del panico.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== SUB-CATEGORIES — 8 cards ============== #}
+<section class="section section--sol-categories" data-reveal data-marker="services">
+  <div class="container">
+    <ul class="sol-grid">
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L4 5 v6 c0 5 3.5 9 8 11 c4.5-2 8-6 8-11 V5 z"/>
+            <circle cx="11" cy="11" r="2.5"/>
+            <path d="M13 13 L16 16"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Incident Handling &amp; DFIR{% else %}Incident Handling &amp; DFIR{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Live incident response, AI-augmented forensics, recovery, lessons learned.{% else %}Risposta a incidenti in corso, analisi forense AI-augmented, recovery, lessons learned.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-61r2</span><span class="fw-chip">SANS</span><span class="fw-chip">ISO 27035</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7 v5 l3 2"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}IR Retainer (24/7){% else %}IR Retainer (24/7){% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Pre-paid response capacity with guaranteed SLA and customised runbooks.{% else %}Capacità di risposta H24/7 prepagata, SLA garantiti, runbook personalizzati.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-61r2</span><span class="fw-chip">ENISA CSIRT</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="2"/>
+            <path d="M12 1 v6 M12 17 v6 M1 12 h6 M17 12 h6"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Threat Hunting{% else %}Threat Hunting{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Proactive hunting on SIEM/EDR to surface undetected intrusions.{% else %}Hunting proattivo su SIEM/EDR per identificare compromise non rilevati.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">MITRE ATT&amp;CK</span><span class="fw-chip">PEAK</span><span class="fw-chip">MITRE D3FEND</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <circle cx="12" cy="12" r="7" opacity="0.6"/>
+            <circle cx="12" cy="12" r="11" opacity="0.3"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Cyber Threat Intelligence{% else %}Cyber Threat Intelligence{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Sector-specific intelligence on threat actors, TTPs, IOCs. Monthly advisories.{% else %}Intelligence settoriale su threat actor, TTP, IOC. Advisory mensili.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">MITRE ATT&amp;CK</span><span class="fw-chip">STIX/TAXII</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 L22 20 H2 z"/>
+            <path d="M12 10 v5 M12 18 h.01"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Detection Engineering{% else %}Detection Engineering{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Detection use cases aligned with TTPs observed in the client's sector.{% else %}Detection use case allineati ai TTP osservati nel settore del cliente.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">MITRE D3FEND</span><span class="fw-chip">{% if lang == 'en' %}SIEM/EDR rules{% else %}rule SIEM/EDR{% endif %}</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21 V9 M9 21 V13 M15 21 V5 M21 21 V11"/>
+            <path d="M2 21 H22"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}SIEM &amp; EDR Maturity{% else %}SIEM &amp; EDR Maturity{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Maturity assessment of SIEM/EDR, MITRE coverage, rule quality, response time.{% else %}Maturity assessment di SIEM/EDR, copertura MITRE, qualità rule, response time.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">SIEM Maturity Model</span><span class="fw-chip">MITRE ATT&amp;CK</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="6" height="6"/>
+            <rect x="15" y="3" width="6" height="6"/>
+            <rect x="9" y="9" width="6" height="6"/>
+            <rect x="3" y="15" width="6" height="6"/>
+            <rect x="15" y="15" width="6" height="6"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Tabletop &amp; Crisis Drill{% else %}Tabletop &amp; Crisis Drill{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Multi-level exercises on realistic scenarios — board, IT, operations.{% else %}Esercitazioni multi-livello su scenari realistici — board, IT, operations.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST SP 800-84</span><span class="fw-chip">ISO 27035</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12 a9 9 0 1 1 -3 -6.7"/>
+            <path d="M21 4 V10 H15"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}Continuous Cyber Defence{% else %}Continuous Cyber Defence{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Annual defense programme: monitoring, hunting, IR drills, awareness.{% else %}Programma annuale di defense: monitoring, hunting, drill, awareness.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">NIST CSF 2.0</span><span class="fw-chip">ISO 27035</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+      <li class="sol-cat" data-stagger>
+        <span class="sol-cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L4 5 v6 c0 5 3.5 9 8 11 c4.5-2 8-6 8-11 V5 z"/>
+            <path d="M9 12 l2 2 l4-4"/>
+          </svg>
+        </span>
+        <h3 class="sol-cat-name">{% if lang == 'en' %}AI Detection &amp; Monitoring{% else %}AI Detection &amp; Monitoring{% endif %}</h3>
+        <p class="sol-cat-desc">
+          {% if lang == 'en' %}Monitoring and detection for AI systems in production: anomalies, abuse, model data leakage.{% else %}Monitoraggio e detection per i sistemi AI in produzione: anomalie, abusi, data leakage dei modelli.{% endif %}
+        </p>
+        <p class="sol-cat-frameworks"><span class="fw-chip">MITRE ATLAS</span><span class="fw-chip">MITRE ATT&amp;CK</span><span class="fw-chip">NIST AI RMF</span></p>
+        <svg class="sol-cat-corner" viewBox="0 0 22 22" aria-hidden="true"><path d="M2 12 L2 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M2 20 L10 20" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </li>
+
+    </ul>
+
+    <p class="sol-standards-note">
+      {% if lang == 'en' %}
+        Every engagement is anchored to international cybersecurity standards and incident response frameworks. Scope, deliverables and depth are tailored to each project.
+      {% else %}
+        Ogni progetto è ancorato agli standard internazionali di cybersecurity e ai framework di incident response. Scope, deliverable e profondità si calibrano sul singolo mandato.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== CTA ============== #}
+<section class="section section--cta" data-reveal>
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Stay ahead of the incident.{% else %}Anticipa l'incidente.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        Active incident, ongoing concern, or just want to set up a retainer before something happens — write to us.
+      {% else %}
+        Incidente in corso, sospetto attivo, o semplicemente serve attivare un retainer prima che qualcosa succeda — scrivici.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Talk to an expert &rarr;{% else %}Parla con un nostro esperto &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+</div>
+
+{% endblock %}

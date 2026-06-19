@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# ============== HERO ============== #}
+<section class="section section--jobs-hero" data-reveal>
+  <div class="container container--narrow">
+    <h1 class="jobs-hero-title">
+      {% if lang == 'en' %}
+        Want to join the team?
+      {% else %}
+        Vuoi entrare nel team?
+      {% endif %}
+    </h1>
+    <p class="jobs-hero-lead">
+      {% if lang == 'en' %}
+        We look for curious people — with technical or legal skills — who want to do cybersecurity seriously, with us. If what we do resonates and you don't see an open role that fits, write to us anyway: we like to meet talented people.
+      {% else %}
+        Cerchiamo persone curiose — con competenze tecniche o legali — che vogliano fare cybersecurity sul serio, con noi. Se ti riconosci in quello che facciamo e non vedi una posizione che fa per te, scrivici lo stesso: ci piace conoscere persone in gamba.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ============== COSA TROVI QUI ============== #}
+<section class="section section--jobs-perks" data-reveal data-marker="culture">
+  <div class="container container--narrow">
+    <h2 class="jobs-section-title">
+      {% if lang == 'en' %}What you'll find here.{% else %}Cosa trovi qui.{% endif %}
+    </h2>
+    <ul class="jobs-perks">
+
+      <li class="jobs-perk" data-stagger>
+        <h3 class="jobs-perk-name">{% if lang == 'en' %}Real technical work{% else %}Lavoro tecnico vero{% endif %}</h3>
+        <p class="jobs-perk-desc">
+          {% if lang == 'en' %}
+            Senior practitioners who do the work alongside you. No slide factory, no copy-pasted reports.
+          {% else %}
+            Senior che lavorano accanto a te, non solo a fianco. Niente slide factory, niente report copiaincollati.
+          {% endif %}
+        </p>
+      </li>
+
+      <li class="jobs-perk" data-stagger>
+        <h3 class="jobs-perk-name">{% if lang == 'en' %}Modern, sovereign stack{% else %}Stack moderno e sovrano{% endif %}</h3>
+        <p class="jobs-perk-desc">
+          {% if lang == 'en' %}
+            Linux, Rust, Open Source, AI in the workflow. We pick technology we can read and stand behind.
+          {% else %}
+            Linux, Rust, Open Source, AI nel workflow. Scegliamo tecnologia che possiamo leggere e di cui possiamo rispondere.
+          {% endif %}
+        </p>
+      </li>
+
+      <li class="jobs-perk" data-stagger>
+        <h3 class="jobs-perk-name">{% if lang == 'en' %}Vicenza HQ + hybrid{% else %}Sede a Vicenza + ibrido{% endif %}</h3>
+        <p class="jobs-perk-desc">
+          {% if lang == 'en' %}
+            Office in Vicenza, hybrid work, no enforced face time. We trust adults.
+          {% else %}
+            Ufficio a Vicenza, lavoro ibrido, niente obbligo di presenza cerimoniale. Trattiamo adulti come adulti.
+          {% endif %}
+        </p>
+      </li>
+
+      <li class="jobs-perk" data-stagger>
+        <h3 class="jobs-perk-name">{% if lang == 'en' %}Room to grow{% else %}Spazio per crescere{% endif %}</h3>
+        <p class="jobs-perk-desc">
+          {% if lang == 'en' %}
+            Junior profiles work alongside seniors with 25+ years of experience in the Cyber Security field. Mentorship is part of the job, not an extra.
+          {% else %}
+            I profili giovani lavorano accanto a senior con più di 25 anni di esperienza nella Cyber Security. Il mentoring è parte del lavoro, non un extra.
+          {% endif %}
+        </p>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+{# ============== CTA — autocandidatura ============== #}
+<section class="section section--cta" data-reveal data-marker="apply">
+  <div class="container container--narrow">
+    <h2 class="cta-title">
+      {% if lang == 'en' %}Send us an open application.{% else %}Mandaci una candidatura spontanea.{% endif %}
+    </h2>
+    <p class="cta-subtitle">
+      {% if lang == 'en' %}
+        We don't publish a fixed list of openings — we look at people first. Tell us what you've been working on, what you'd like to do next, and why Agorà. We read everything and reply.
+      {% else %}
+        Non pubblichiamo una lista fissa di posizioni — guardiamo prima alle persone. Raccontaci a cosa hai lavorato, cosa ti piacerebbe fare adesso, e perché Agorà. Leggiamo tutto e rispondiamo.
+      {% endif %}
+    </p>
+    <p class="cta-buttons">
+      <a class="btn btn-primary btn-sm" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Send an open application &rarr;{% else %}Invia la tua candidatura &rarr;{% endif %}
+      </a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

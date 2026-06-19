@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="blog-list container container--narrow">
+  <header class="prose-header">
+    <p class="prose-eyebrow mono">// field notes</p>
+    <h1 class="prose-title">{{ section.title }}</h1>
+    {% if section.description %}<p class="prose-lead">{{ section.description }}</p>{% endif %}
+    <p class="blog-feed-cta">
+      <a class="btn btn-ghost btn-sm" href="{% if lang == 'en' %}{{ get_url(path='en/blog/atom.xml') }}{% else %}{{ get_url(path='blog/atom.xml') }}{% endif %}" type="application/atom+xml">
+        <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M5 3a16 16 0 0 1 16 16h-3A13 13 0 0 0 5 6z"/><path d="M5 10a9 9 0 0 1 9 9H11a6 6 0 0 0-6-6z"/><circle cx="6.2" cy="17.8" r="2.2"/></svg>
+        {% if lang == 'en' %}RSS feed{% else %}Feed RSS{% endif %}
+      </a>
+    </p>
+  </header>
+
+  {% if section.pages %}
+    <ul class="post-list">
+      {% for post in section.pages %}
+        {% if loop.first %}
+          <li class="post-list-featured">
+            <a class="post-card post-card--featured" href="{{ post.permalink | safe }}">
+              <span class="post-card-watermark" aria-hidden="true">01</span>
+              <p class="post-meta mono">
+                <time datetime="{{ post.date }}">{{ post.date | date(format="%Y-%m-%d") }}</time>
+                {% if post.taxonomies.tags %} · {% for tag in post.taxonomies.tags %}
+                  {% set tag_lower = tag | lower %}
+                  {% if 'compliance' in tag_lower or 'gdpr' in tag_lower or 'nis' in tag_lower or 'dora' in tag_lower %}
+                    {% set cls = 'tag tag--compliance' %}
+                  {% elif 'defense' in tag_lower or 'ir' in tag_lower or 'forensic' in tag_lower %}
+                    {% set cls = 'tag tag--defense' %}
+                  {% elif 'offense' in tag_lower or 'pentest' in tag_lower or 'red' in tag_lower %}
+                    {% set cls = 'tag tag--offense' %}
+                  {% elif 'ai' in tag_lower or 'llm' in tag_lower %}
+                    {% set cls = 'tag tag--ai' %}
+                  {% else %}
+                    {% set cls = 'tag' %}
+                  {% endif %}
+                  <span class="{{ cls }}">{{ tag }}</span>{% if not loop.last %} {% endif %}
+                {% endfor %}{% endif %}
+              </p>
+              <h2 class="post-title post-card-title">{{ post.title }}</h2>
+              {% if post.description %}<p class="post-excerpt post-card-excerpt">{{ post.description }}</p>{% endif %}
+              <span class="post-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="post-list-item">
+            <a class="post-card" href="{{ post.permalink | safe }}">
+              <p class="post-meta mono">
+                <time datetime="{{ post.date }}">{{ post.date | date(format="%Y-%m-%d") }}</time>
+                {% if post.taxonomies.tags %} · {% for tag in post.taxonomies.tags %}
+                  {% set tag_lower = tag | lower %}
+                  {% if 'compliance' in tag_lower or 'gdpr' in tag_lower or 'nis' in tag_lower or 'dora' in tag_lower %}
+                    {% set cls = 'tag tag--compliance' %}
+                  {% elif 'defense' in tag_lower or 'ir' in tag_lower or 'forensic' in tag_lower %}
+                    {% set cls = 'tag tag--defense' %}
+                  {% elif 'offense' in tag_lower or 'pentest' in tag_lower or 'red' in tag_lower %}
+                    {% set cls = 'tag tag--offense' %}
+                  {% elif 'ai' in tag_lower or 'llm' in tag_lower %}
+                    {% set cls = 'tag tag--ai' %}
+                  {% else %}
+                    {% set cls = 'tag' %}
+                  {% endif %}
+                  <span class="{{ cls }}">{{ tag }}</span>{% if not loop.last %} {% endif %}
+                {% endfor %}{% endif %}
+              </p>
+              <h2 class="post-title">{{ post.title }}</h2>
+              {% if post.description %}<p class="post-excerpt">{{ post.description }}</p>{% endif %}
+              <span class="post-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state">{% if lang == 'en' %}No posts yet — coming soon.{% else %}Nessun articolo per ora — in arrivo.{% endif %}</p>
+    <p class="section-cta">
+      <a class="btn btn-ghost btn-sm" href="{% if lang == 'en' %}{{ get_url(path='en/blog/atom.xml') }}{% else %}{{ get_url(path='blog/atom.xml') }}{% endif %}">
+        {% if lang == 'en' %}Follow the RSS feed &rarr;{% else %}Segui il feed RSS &rarr;{% endif %}
+      </a>
+    </p>
+  {% endif %}
+</section>
+{% endblock %}
