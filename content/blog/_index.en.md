@@ -1,6 +1,6 @@
 +++
 title = "Blog"
-description = "Notes from our work: incident response, gap analysis, architectural decisions, research and occasionally useful provocations."
+description = "Notes from our work: incident response, gap analysis, architectural decisions, research and the occasional useful insight."
 template = "blog-list.html"
 page_template = "blog-page.html"
 sort_by = "date"

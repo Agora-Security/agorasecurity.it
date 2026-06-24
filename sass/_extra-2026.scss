@@ -657,6 +657,43 @@
 .btn.is-disabled,
 .is-disabled > .btn { opacity: 0.55; pointer-events: none; }
 
+// Ricerca & Sviluppo — griglia progetti + tag
+// Flex + wrap so a single card sizes to a comfortable measure instead of
+// stretching to the full container width; more cards wrap side by side.
+.rd-projects {
+  list-style: none;
+  margin: var(--sp-6) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+.rd-projects > .solution-card {
+  flex: 1 1 32ch;
+  max-width: 54ch;
+}
+
+.rd-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: var(--sp-1) 0 0;
+  padding: 0;
+}
+
+.rd-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  background: rgba(0, 102, 254, 0.06);
+  border: 1px solid rgba(0, 102, 254, 0.20);
+  border-radius: var(--radius-sm);
+  color: var(--brand-soft);
+}
+
 // ------------------------------------------------------------
 // FILOSOFIA — 5 principi spiegati
 // ------------------------------------------------------------

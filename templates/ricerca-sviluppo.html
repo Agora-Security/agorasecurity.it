@@ -24,29 +24,50 @@
   </div>
 </section>
 
-{# ============== PROGETTI — placeholder "stay tuned" ============== #}
+{# ============== PROGETTI ============== #}
 <section class="section section--sol-categories" data-reveal data-marker="projects">
   <div class="container container--narrow">
-    <div class="rd-placeholder">
-      <span class="rd-placeholder-eyebrow mono">// stay tuned</span>
-      <h2 class="section-title">{% if lang == 'en' %}Projects coming soon.{% else %}Progetti in arrivo.{% endif %}</h2>
-      <p class="section-lead">
-        {% if lang == 'en' %}
-          We're getting our projects ready — proprietary products, open-source contributions and research. They'll land here soon, each with links to its GitHub repository and the related blog posts. In the meantime, follow along.
-        {% else %}
-          Stiamo preparando i nostri progetti — prodotti proprietari, contributi open source e ricerca. Arriveranno qui a breve, ognuno con i link al repository GitHub e agli articoli del blog collegati. Nel frattempo, seguici.
-        {% endif %}
-      </p>
-      <p class="rd-links">
-        <a class="btn btn-primary btn-sm" href="{{ config.extra.github }}" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.16c-3.34.72-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          {% if lang == 'en' %}Explore our GitHub &rarr;{% else %}Esplora il nostro GitHub &rarr;{% endif %}
+    <span class="rd-placeholder-eyebrow mono">// {% if lang == 'en' %}our projects{% else %}i nostri progetti{% endif %}</span>
+    <h2 class="section-title">{% if lang == 'en' %}What we're building.{% else %}Cosa stiamo costruendo.{% endif %}</h2>
+
+    <ul class="rd-projects">
+      <li class="solution-card">
+        <a href="https://resysto.ai" target="_blank" rel="noopener">
+          <span class="solution-card-eyebrow mono">{% if lang == 'en' %}Product · private beta{% else %}Prodotto · beta privata{% endif %}</span>
+          <h3 class="solution-card-title">Resysto</h3>
+          <p class="solution-card-desc">
+            {% if lang == 'en' %}
+              A unified, AI-native Cyber Resilience platform — built for everyone from SMBs with no IT or security team to large enterprises coordinating many. At its core: vCISO and Incident Handling, helping you manage and meet the requirements of the EU frameworks — e.g. GDPR, NIS 2, DORA, CRA, the AI Act and the Data Act.
+            {% else %}
+              Una piattaforma unificata di Cyber Resilience, AI-native — pensata per tutti: dalle PMI senza team IT o di sicurezza alle grandi imprese che devono coordinarne molti. Al centro: vCISO e Incident Handling, per gestire e raggiungere i requisiti dei framework europei — p.es. GDPR, NIS 2, DORA, CRA, AI Act e Data Act.
+            {% endif %}
+          </p>
+          <ul class="rd-tags" aria-label="{% if lang == 'en' %}Topics{% else %}Argomenti{% endif %}">
+            <li class="rd-tag">AI-native</li>
+            <li class="rd-tag">Cyber Resilience</li>
+            <li class="rd-tag">vCISO</li>
+            <li class="rd-tag">Incident Handling</li>
+            <li class="rd-tag">GDPR</li>
+            <li class="rd-tag">NIS 2</li>
+            <li class="rd-tag">DORA</li>
+            <li class="rd-tag">CRA</li>
+            <li class="rd-tag">AI Act</li>
+            <li class="rd-tag">Data Act</li>
+          </ul>
+          <span class="solution-card-cta">{% if lang == 'en' %}Visit resysto.ai &rarr;{% else %}Vai su resysto.ai &rarr;{% endif %}</span>
         </a>
-        <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">
-          {% if lang == 'en' %}Read the blog &rarr;{% else %}Leggi il blog &rarr;{% endif %}
-        </a>
-      </p>
-    </div>
+      </li>
+    </ul>
+
+    <p class="rd-links">
+      <a class="btn btn-primary btn-sm" href="{{ config.extra.github }}" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.16c-3.34.72-4.04-1.41-4.04-1.41-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        {% if lang == 'en' %}Explore our GitHub &rarr;{% else %}Esplora il nostro GitHub &rarr;{% endif %}
+      </a>
+      <a class="btn btn-ghost btn-sm" href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Read the blog &rarr;{% else %}Leggi il blog &rarr;{% endif %}
+      </a>
+    </p>
   </div>
 </section>
 
