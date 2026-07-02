@@ -11,7 +11,7 @@
 {% set page_desc = page.description | default(value=section.description | default(value=config.description)) %}
 {% set is_home = current_path | default(value="/") == "/" or current_path | default(value="/") == "/en/" %}
 
-<title>{% if is_home %}{{ page_title }}{% else %}{{ page_title }} — {{ config.title }}{% endif %}</title>
+<title>{% block title %}{% if is_home %}{{ page_title }}{% else %}{{ page_title }} — {{ config.title }}{% endif %}{% endblock %}</title>
 <meta name="description" content="{{ page_desc }}">
 <meta name="robots" content="index,follow">
 

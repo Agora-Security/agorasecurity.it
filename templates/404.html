@@ -1,26 +1,41 @@
 {% extends "base.html" %}
 
-{% block content %}
-<section class="error-404 container container--narrow">
-  <h1 class="prose-title">{% if lang == 'en' %}Compromise simulated.{% else %}Compromissione simulata.{% endif %}</h1>
-  <p class="prose-lead">
-    {% if lang == 'en' %}
-      The page you requested does not exist. Either we removed it, or you typed it wrong.
-      Either way: this is a controlled environment, you're safe.
-    {% else %}
-      La pagina richiesta non esiste. O l'abbiamo rimossa, o l'URL è sbagliato.
-      In ogni caso: ambiente controllato, nessun pericolo.
-    {% endif %}
-  </p>
-  {% set log_ts = now() | date(format="%b %d %H:%M:%S") %}
-  <pre class="terminal-log mono" data-typing aria-hidden="true"><code data-typing-line data-delay="0">{{ log_ts }} agora-edge kernel: [page.lookup] segment 'requested-path' not mapped to physical content</code>
-<code data-typing-line data-delay="400">{{ log_ts }} agora-edge nginx[1337]: <span class="log-status">404</span> GET &lt;redacted&gt; ua=&quot;&lt;truncated&gt;&quot; — no panic, this is intentional containment</code>
-<code data-typing-line data-delay="750">{{ log_ts }} agora-edge agosec-watch: incident=none confidence=1.00 <span class="log-action">action=redirect_safe</span> note={% if lang == 'en' %}&quot;request logged — nothing to worry about&quot;{% else %}&quot;richiesta registrata — nessun problema&quot;{% endif %}</code></pre>
-  <div class="terminal-progress" data-progress aria-hidden="true"><span></span></div>
-  <p class="cta-mono mono">→ <a href="/">{% if lang == 'en' %}back to safety{% else %}torna in sicurezza{% endif %}</a></p>
-</section>
-{% endblock %}
+{% block title %}{% if lang == 'en' %}Page not found{% else %}Pagina non trovata{% endif %} — {{ config.title }}{% endblock %}
 
-{% block extra_js %}
-<script src="{{ get_url(path='js/404-typing.js') }}" defer></script>
+{% block content %}
+<section class="section section--error" data-reveal>
+  <div class="container container--narrow">
+    <p class="error-404-code">404</p>
+    <h1 class="error-404-title">
+      {% if lang == 'en' %}Page not found.{% else %}Pagina non trovata.{% endif %}
+    </h1>
+    <p class="error-404-lead">
+      {% if lang == 'en' %}
+        The page you're looking for doesn't exist or has been moved. From here you can go back to the home page or reach one of the main sections.
+      {% else %}
+        La pagina che cerchi non esiste o è stata spostata. Da qui puoi tornare alla home o raggiungere una delle sezioni principali.
+      {% endif %}
+    </p>
+
+    <div class="cta-buttons error-404-actions">
+      <a class="btn btn-primary" href="{{ get_url(path='/', lang=lang) }}">
+        {% if lang == 'en' %}Back to home{% else %}Torna alla home{% endif %}
+      </a>
+      <a class="btn btn-ghost" href="{{ get_url(path='@/contatti/_index.md', lang=lang) }}">
+        {% if lang == 'en' %}Contact us{% else %}Contattaci{% endif %}
+      </a>
+    </div>
+
+    <nav class="error-404-links" aria-label="{% if lang == 'en' %}Main pages{% else %}Pagine principali{% endif %}">
+      <p class="error-404-links-label mono">// {% if lang == 'en' %}main pages{% else %}pagine principali{% endif %}</p>
+      <ul>
+        <li><a href="{{ get_url(path='@/soluzioni/_index.md', lang=lang) }}">{% if lang == 'en' %}Solutions{% else %}Soluzioni{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/approccio/_index.md', lang=lang) }}">{% if lang == 'en' %}Approach{% else %}Approccio{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/chi-siamo/_index.md', lang=lang) }}">{% if lang == 'en' %}About{% else %}Chi siamo{% endif %}</a></li>
+        <li><a href="{{ get_url(path='@/trust-center/_index.md', lang=lang) }}">Trust Center</a></li>
+        <li><a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
 {% endblock %}

@@ -574,60 +574,82 @@
   .post-footer { margin-top: var(--sp-7); padding-top: var(--sp-5); border-top: 1px solid var(--border-soft); }
 }
 
-// ---- 404 terminal ----
-.error-404 {
-  padding-block: var(--sp-9);
-
-  .terminal-log {
-    font-size: var(--fs-xs);
-    color: var(--text-dim);
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    padding: var(--sp-5);
-    margin: var(--sp-6) 0 var(--sp-3);
-    overflow-x: auto;
-    line-height: 1.6;
-    code { background: none; border: 0; padding: 0; color: var(--text-dim); display: block; }
-
-    .log-status { color: var(--danger); font-weight: 700; }
-    .log-action { color: var(--success); }
-  }
-
-  // Typing cursor — blinking caret a fine ultima riga durante typing
-  .terminal-log[data-typing] code:last-child::after {
-    content: "▌";
-    color: var(--brand-soft);
-    margin-left: 2px;
-    animation: term404Caret 1s steps(1) infinite;
-  }
+// ---- 404 / pagina non trovata ----
+.section--error {
+  padding-block: clamp(4rem, 9vw + 2rem, 9rem);
+  background:
+    radial-gradient(ellipse at top left, rgba(0, 102, 254, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(255, 192, 0, 0.05) 0%, transparent 50%),
+    var(--bg);
 }
 
-@keyframes term404Caret {
-  0%, 50%   { opacity: 1; }
-  51%, 100% { opacity: 0; }
+.error-404-code {
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 13vw + 1rem, 9rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--sp-4);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-soft) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-// Progress bar "containment" — appare sotto il terminal-log
-.terminal-progress {
-  height: 3px;
-  background: var(--border-soft);
-  border-radius: 999px;
-  overflow: hidden;
-  margin: var(--sp-3) 0 var(--sp-5);
-
-  span {
-    display: block;
-    height: 100%;
-    width: 0;
-    background: var(--success);
-    border-radius: inherit;
-  }
+.error-404-title {
+  font-family: var(--font-serif);
+  font-size: clamp(var(--fs-2xl), 4vw + 1rem, var(--fs-4xl));
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--text);
+  margin: 0 0 var(--sp-5);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .terminal-log[data-typing] code::after { animation: none; opacity: 0; }
-  .terminal-progress span { width: 100%; transition: none; }
+.error-404-lead {
+  font-size: var(--fs-lg);
+  color: var(--text-dim);
+  line-height: var(--lh-body);
+  max-width: 54ch;
+  margin: 0 0 var(--sp-6);
+}
+
+.error-404-actions {
+  margin-bottom: var(--sp-8);
+}
+
+.error-404-links {
+  border-top: 1px solid var(--border);
+  padding-top: var(--sp-5);
+}
+
+.error-404-links-label {
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  margin: 0 0 var(--sp-3);
+}
+
+.error-404-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3) var(--sp-5);
+}
+
+.error-404-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.error-404-links a:hover,
+.error-404-links a:focus-visible {
+  color: var(--text);
+  border-bottom-color: var(--accent);
 }
 
 // ============================================================
